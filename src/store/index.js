@@ -1,15 +1,19 @@
-/**
- * Created by leibo on 18/2/6.
- */
 import Vue from 'vue'
 import Vuex from 'vuex'
-import actions from './actions'
-import mutations from './mutations'
+// import actions from './Agencies/actions'
+// import mutations from './Agencies/mutations'
+
+import old from './old'
+import advertisement from './advertisement'
 
 Vue.use(Vuex);
+const debug = process.env.NODE_ENV !== 'production'
+
 
 export default new Vuex.Store({
-  modules: {
-    mutations
-  }, actions
+  modules:{
+    old,
+    advertisement
+  },
+  strict: debug,
 })

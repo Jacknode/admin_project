@@ -27,6 +27,8 @@ import AdminHuileyouReturn from '@/components/admin/AdminHuileyouReturn'
 import AdminIntegralWeight from '@/components/admin/AdminIntegralWeight'
 //积分权重
 import AdminIntegralType from '@/components/admin/AdminIntegralType'
+//广告类型
+import AdType from '@/components/Advertisements/AdType'
 
 export default [
   {
@@ -67,6 +69,15 @@ export default [
           User: AdminIntegralType
         },
         name: 'AdminIntegralType'
+      },
+      //广告类型
+      {
+        path: 'adType',
+        components: {
+          default: Home,
+          User: AdType
+        },
+        name: 'AdType'
       },
       //供应商信息审核
       {

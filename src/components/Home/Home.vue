@@ -132,6 +132,14 @@
                       </li>
                     </ul>
                   </li>
+                  <li>
+                    <a href="javascript:;"><i class=" icon-droplet"></i> <span>广告管理</span></a>
+                    <ul>
+                      <li>
+                        <router-link to="/home/adType">广告类型</router-link>
+                      </li>
+                    </ul>
+                  </li>
                 </ul>
               </div>
             </div>

@@ -9,7 +9,7 @@ import 'element-ui/lib/theme-chalk/index.css'
 import '@/assets/js/login';
 import App from './App'
 import router from './router'
-import store from './store'
+import store from './store/index'
 import axios from 'axios'
 import * as filters from './filters'
 // axios.interceptors.request.use((config) => {
