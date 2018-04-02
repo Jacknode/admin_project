@@ -12,7 +12,7 @@ const mutations = {
       isRotateInDownRight: false
     }
   },
-  oPTranstionFalse() {
+  oPTranstionFalse(state) {
     state.transtionActive = {
       isActive: !state.transtionActive.isActive,
       isRotateInDownRight: !state.transtionActive.isRotateInDownRight

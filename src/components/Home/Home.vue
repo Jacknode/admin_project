@@ -133,10 +133,29 @@
                     </ul>
                   </li>
                   <li>
-                    <a href="javascript:;"><i class=" icon-droplet"></i> <span>广告管理</span></a>
+                    <a href="javascript:;"><i class="icon-twitter"></i> <span>广告管理</span></a>
                     <ul>
                       <li>
                         <router-link to="/home/adType">广告类型</router-link>
+                      </li>
+                      <li>
+                        <router-link to="/home/adPosition">广告位置管理</router-link>
+                      </li>
+                    </ul>
+                  </li>
+                  <li>
+                    <a href="javascript:;"><i class="icon-ticket"></i> <span>门票管理</span></a>
+                    <ul>
+                      <li>
+                        <router-link to="/home/ticketTheme">主题管理</router-link>
+                      </li>
+                    </ul>
+                  </li>
+                  <li>
+                    <a href="javascript:;"><i class="icon-people"></i> <span>酒店管理</span></a>
+                    <ul>
+                      <li>
+                        <router-link to="/home/hotelImageType">酒店图片类型管理</router-link>
                       </li>
                     </ul>
                   </li>

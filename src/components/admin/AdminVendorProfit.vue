@@ -250,7 +250,7 @@
 
         //省
         let proviceOptions = {
-          "areaPid": 0
+          "areaPid": 3337
         }
         await this.$store.dispatch('initProviceList',proviceOptions)
 

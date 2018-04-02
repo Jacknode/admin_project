@@ -30,6 +30,13 @@ import AdminIntegralType from '@/components/admin/AdminIntegralType'
 //广告类型
 import AdType from '@/components/Advertisements/AdType'
 
+/*-------------------------------------门票管理----------------------------------------------*/
+import TicketTheme from '@/components/ticket/ticketTheme' //门票主题hotelImageType
+
+/*-------------------------------------酒店管理----------------------------------------------*/
+import HotelImageType from '@/components/hotel/hotelImageType' //酒店图片类型主题
+
+
 export default [
   {
     path: '/',
@@ -43,6 +50,29 @@ export default [
       default: Home
     },
     children:[
+      /*-------------------------------------门票管理----------------------------------------------*/
+      //门票主题
+      {
+        path: 'ticketTheme',
+        components: {
+          default: Home,
+          User: TicketTheme
+        },
+        name: 'TicketTheme'
+      },
+
+      /*-------------------------------------酒店管理----------------------------------------------*/
+      //酒店图片类型主题
+      {
+        path: 'hotelImageType',
+        components: {
+          default: Home,
+          User: HotelImageType
+        },
+        name: 'HotelImageType'
+      },
+
+
       //商家信息
       {
         path: 'adminBusinessInformation',
