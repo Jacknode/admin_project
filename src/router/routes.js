@@ -34,8 +34,9 @@ import AdType from '@/components/Advertisements/AdType'
 import TicketTheme from '@/components/ticket/ticketTheme' //门票主题hotelImageType
 
 /*-------------------------------------酒店管理----------------------------------------------*/
-import HotelImageType from '@/components/hotel/hotelImageType' //酒店图片类型主题
-
+import HotelImageType from '@/components/hotel/HotelImageType' //酒店图片类型主题
+import HotelRecommendType from '@/components/hotel/HotelRecommendType' //酒店图片类型主题
+import HotelThemeCategory from '@/components/hotel/HotelThemeCategory' //酒店主题类别
 
 export default [
   {
@@ -62,7 +63,7 @@ export default [
       },
 
       /*-------------------------------------酒店管理----------------------------------------------*/
-      //酒店图片类型主题
+      //酒店图片类型
       {
         path: 'hotelImageType',
         components: {
@@ -70,6 +71,24 @@ export default [
           User: HotelImageType
         },
         name: 'HotelImageType'
+      },
+      //酒店推荐类型HotelThemeCategory
+      {
+        path: 'hotelRecommendType',
+        components: {
+          default: Home,
+          User: HotelRecommendType
+        },
+        name: 'HotelRecommendType'
+      },
+      //酒店主题类别
+      {
+        path: 'hotelThemeCategory',
+        components: {
+          default: Home,
+          User: HotelThemeCategory
+        },
+        name: 'HotelThemeCategory'
       },
 
 

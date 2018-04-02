@@ -1,14 +1,14 @@
 <template>
   <div>
     <section id="wrap">
-      <h1 class="userClass">酒店图片类型</h1>
+      <h1 class="userClass">酒店主题类别</h1>
       <el-col :span="24" class="formSearch">
         <el-form :inline="true">
           <el-form-item>
-            <span>图片类型名称筛选:</span>
+            <span>主题类别名称筛选:</span>
           </el-form-item>
           <el-form-item>
-            <el-input type="text" v-model="imageName" auto-complete="off" placeholder="图片类型名称" size="small"></el-input>
+            <el-input type="text" v-model="categoryName" auto-complete="off" placeholder="主题类别名称" size="small"></el-input>
           </el-form-item>
           <el-form-item>
             <el-button type="primary" @click="search" size="small">查询</el-button>
@@ -19,36 +19,43 @@
 
       <!--数据展示-->
       <el-table
-        :data="hotelImageTypeList"
+        :data="hotelThemeCategoryList"
         highlight-current-row
         v-loading="isLoading"
         style="width: 100%">
         <el-table-column
           align="center"
-          label="图片类型编码"
-          prop="ht_it_ID">
+          label="类别编码"
+          prop="ht_tt_ThemeID">
         </el-table-column>
         <el-table-column
           align="center"
-          label="图片类型名称"
-          prop="ht_hi_Name">
+          label="类别名称"
+          prop="ht_tt_Name">
+        </el-table-column>
+        <el-table-column
+          align="center"
+          label="是否热门"
+          prop="ht_tt_IsHot">
+          <template slot-scope="props">
+            <span>{{props.row.ht_tt_IsHot | getHotName}}</span>
+          </template>
         </el-table-column>
         <el-table-column label="操作" align="center">
           <template slot-scope="scope">
             <el-button
               size="mini"
               type="primary"
-              @click="Update(scope.row.ht_it_ID)">修改
+              @click="Update(scope.row.ht_tt_ThemeID)">修改
             </el-button>
             <el-button
               size="mini"
               type="danger"
-              @click="Delete(scope.row.ht_it_ID)">删除
+              @click="Delete(scope.row.ht_tt_ThemeID)">删除
             </el-button>
           </template>
         </el-table-column>
       </el-table>
-
 
       <!--分页-->
       <div class="block" style="float: right;">
@@ -62,11 +69,20 @@
         </el-pagination>
       </div>
 
-      <!--添加酒店图片类型-->
-      <el-dialog title="添加酒店图片类型" :visible.sync="addDialog">
+      <!--添加主题类别-->
+      <el-dialog title="添加主题类别" :visible.sync="addDialog">
         <el-form :model="addOptions">
-          <el-form-item label="图片类型名称:" :label-width="formLabelWidth">
-            <el-input v-model="addOptions.data.ht_hi_Name" placeholder="请输入图片类型名称"></el-input>
+          <el-form-item label="主题类别名称:" :label-width="formLabelWidth">
+            <el-input v-model="addOptions.data.ht_tt_Name" placeholder="请输入主题类别名称"></el-input>
+          </el-form-item>
+          <el-form-item label="是否热门:" :label-width="formLabelWidth">
+            <el-switch
+              v-model="addOptions.data.ht_tt_IsHot"
+              active-color="#13ce66"
+              inactive-color="#ff4949"
+              active-value="1"
+              inactive-value="0">
+            </el-switch>
           </el-form-item>
         </el-form>
         <div slot="footer" class="dialog-footer">
@@ -75,11 +91,20 @@
         </div>
       </el-dialog>
 
-      <!--修改酒店图片类型-->
-      <el-dialog title="修改酒店图片类型" :visible.sync="updateDialog">
-        <el-form :model="updateHotelImageTypeObj">
-          <el-form-item label="图片类型名称:" :label-width="formLabelWidth">
-            <el-input v-model="updateHotelImageTypeObj.ht_hi_Name" placeholder="请输入图片类型名称"></el-input>
+      <!--修改主题类别-->
+      <el-dialog title="修改主题类别" :visible.sync="updateDialog">
+        <el-form :model="updateHotelThemeCategoryObj">
+          <el-form-item label="主题类别名称:" :label-width="formLabelWidth">
+            <el-input v-model="updateHotelThemeCategoryObj.ht_tt_Name" placeholder="请输入主题类别名称"></el-input>
+          </el-form-item>
+          <el-form-item label="是否热门:" :label-width="formLabelWidth">
+            <el-switch
+              v-model="updateHotelThemeCategoryObj.ht_tt_IsHot"
+              active-color="#13ce66"
+              inactive-color="#ff4949"
+              active-value="1"
+              inactive-value="0">
+            </el-switch>
           </el-form-item>
         </el-form>
         <div slot="footer" class="dialog-footer">
@@ -96,7 +121,12 @@
     name: '',
     data(){
       return {
+        categoryName:'',
+        total:0,
+        isLoading:false,
         addDialog:false,
+        updateDialog:false,
+        formLabelWidth:'120px',
         addOptions:{
           "loginUserID": "huileyou",
           "loginUserPass": "123",
@@ -104,28 +134,28 @@
           "operateUserName": "",
           "pcName": "",
           "data": {
-            "ht_hi_Name": "",//图片类型名称
+            "ht_tt_Name": "",//主题名称
+            "ht_tt_IsHot": "",//
           }
-        },
-        imageName:'',
-        total:0,
-        isLoading:false,
-        updateDialog:false,
-        formLabelWidth:'120px'
+        }
       }
     },
     computed: mapGetters([
-      'hotelImageTypeList',
-      'updateHotelImageTypeObj'
+      'hotelThemeCategoryList',
+      'updateHotelThemeCategoryObj'
     ]),
     created(){
     },
     methods: {
       //分页
       handleCurrentChange(num){
-        this.initData(this.imageName,num)
+        this.initData(this.categoryName,num);
       },
-      //初始化数据
+      //查询
+      search(){
+        this.initData(this.categoryName,1)
+      },
+      //初始化
       initData(name,page){
         let options = {
           "loginUserID": "huileyou",
@@ -133,13 +163,14 @@
           "operateUserID": "操作员编码",
           "operateUserName": "操作员名称",
           "pcName": "",
-          "ht_it_ID": "",//图片类型编码
-          "ht_hi_Name": name?name:'',//图片类型名称
-          "page": page?page:1,
-          "rows": 5
-        };
+          "ht_tt_ThemeID": "",//主题ID
+          "ht_tt_Name": name?name:'',//主题名称
+          "ht_tt_IsHot": "",//是否热门
+          "page":page?page:1,//页码编号
+          "rows":"5",//单页显示数量
+        }
         this.isLoading = true;
-        this.$store.dispatch('initHotelImageType',options)
+        this.$store.dispatch('initHotelThemeCategory',options)
           .then(total=>{
             this.total = total;
             this.isLoading = false;
@@ -150,10 +181,6 @@
             });
           })
       },
-      //查询
-      search(){
-        this.initData(this.imageName,1)
-      },
       //添加
       Add(){
         this.addDialog = true;
@@ -161,26 +188,26 @@
       },
       //添加提交
       addSubmit(){
-        this.$store.dispatch('AddHotelImageType',this.addOptions)
+        this.$store.dispatch('AddHotelThemeCategory',this.addOptions)
           .then((suc)=>{
             this.$notify({
               message: suc,
               type: 'success'
             });
-            this.initData(this.imageName,1)
+            this.initData(this.categoryName,1)
           },err=>{
             this.$notify({
               message: err,
               type: 'error'
             });
           });
-          this.addDialog = false;
+        this.addDialog = false;
       },
       //修改
       Update(id){
         this.updateDialog = true;
         this.$store.commit('setTranstionFalse');
-        this.$store.commit('initUpdateHotelImageType',id)
+        this.$store.commit('initUpdateHotelThemeCategory',id);
       },
       //修改提交
       updateSubmit(){
@@ -190,15 +217,15 @@
           "operateUserID": "操作员编码",
           "operateUserName": "操作员名称",
           "pcName": "",
-          "data": this.updateHotelImageTypeObj
-        };
-        this.$store.dispatch('UpdateHotelImageType',updateOptions)
+          "data": this.updateHotelThemeCategoryObj
+        }
+        this.$store.dispatch('UpdateHotelThemeCategory',updateOptions)
           .then((suc)=>{
             this.$notify({
               message: suc,
               type: 'success'
             });
-            this.initData(this.imageName,1)
+            this.initData(this.categoryName,1)
           },err=>{
             this.$notify({
               message: err,
@@ -210,22 +237,22 @@
       //删除
       Delete(id){
         let deleteOptions = {
-            "loginUserID": "huileyou",
-            "loginUserPass": "123",
-            "operateUserID": "操作员编码",
-            "operateUserName": "操作员名称",
-            "pcName": "",
-            "data": {
-              "ht_it_ID": id//图片类型编码
-            }
-          };
-        this.$store.dispatch('DeleteHotelImageType',deleteOptions)
+          "loginUserID": "huileyou",
+          "loginUserPass": "123",
+          "operateUserID": "操作员编码",
+          "operateUserName": "操作员名称",
+          "pcName": "",
+          "data": {
+            "ht_tt_ThemeID": id//图片类型编码
+          }
+        };
+        this.$store.dispatch('DeleteHotelThemeCategory',deleteOptions)
         .then((suc)=>{
           this.$notify({
             message: suc,
             type: 'success'
           });
-          this.initData(this.imageName,1)
+          this.initData(this.categoryName,1)
         },err=>{
           this.$notify({
             message: err,

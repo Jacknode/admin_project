@@ -23,6 +23,11 @@ Object.keys(filters).forEach((key) => {
   Vue.filter(key, filters[key]);
 })
 Vue.config.productionTip = false;
+import VueLazyLoad from 'vue-lazyload'
+Vue.use(VueLazyLoad,{
+  error:'../static/img/error.jpg',
+  loading:'../static/img/loading.gif'
+});
 
 Vue.use(ElementUI);
 Vue.prototype.$http = axios;

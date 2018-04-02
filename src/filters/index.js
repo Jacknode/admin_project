@@ -178,3 +178,14 @@ export const getUseTime = val=>{
     }
   }
 };
+//热门
+export const getHotName = val=>{
+  switch (Number(val)) {
+    case 0:
+      return '否';
+    case 1:
+      return '是';
+    default:
+      return '未知';
+  }
+};

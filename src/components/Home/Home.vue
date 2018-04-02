@@ -157,6 +157,12 @@
                       <li>
                         <router-link to="/home/hotelImageType">酒店图片类型管理</router-link>
                       </li>
+                      <li>
+                        <router-link to="/home/hotelRecommendType">酒店推荐类型管理</router-link>
+                      </li>
+                      <li>
+                        <router-link to="/home/hotelThemeCategory">酒店主题类别管理</router-link>
+                      </li>
                     </ul>
                   </li>
                 </ul>
