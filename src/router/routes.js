@@ -37,7 +37,7 @@ import TicketTheme from '@/components/ticket/ticketTheme' //门票主题hotelIma
 import HotelImageType from '@/components/hotel/HotelImageType' //酒店图片类型主题
 import HotelRecommendType from '@/components/hotel/HotelRecommendType' //酒店图片类型主题
 import HotelThemeCategory from '@/components/hotel/HotelThemeCategory' //酒店主题类别
-
+import HotelCityRecommendType from '@/components/hotel/HotelCityRecommendType' //酒店城市推荐类型
 export default [
   {
     path: '/',
@@ -89,6 +89,15 @@ export default [
           User: HotelThemeCategory
         },
         name: 'HotelThemeCategory'
+      },
+      //酒店主题类别
+      {
+        path: 'hotelCityRecommendType',
+        components: {
+          default: Home,
+          User: HotelCityRecommendType
+        },
+        name: 'HotelCityRecommendType'
       },
 
 

@@ -163,6 +163,9 @@
                       <li>
                         <router-link to="/home/hotelThemeCategory">酒店主题类别管理</router-link>
                       </li>
+                      <li>
+                        <router-link to="/home/hotelCityRecommendType">酒店城市推荐类型管理</router-link>
+                      </li>
                     </ul>
                   </li>
                 </ul>
