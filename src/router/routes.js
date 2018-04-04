@@ -38,6 +38,9 @@ import HotelImageType from '@/components/hotel/HotelImageType' //酒店图片类
 import HotelRecommendType from '@/components/hotel/HotelRecommendType' //酒店图片类型主题
 import HotelThemeCategory from '@/components/hotel/HotelThemeCategory' //酒店主题类别
 import HotelCityRecommendType from '@/components/hotel/HotelCityRecommendType' //酒店城市推荐类型
+import HotelFacilitiesType from '@/components/hotel/HotelFacilitiesType' //酒店设施类型
+import HotelFacilities from '@/components/hotel/HotelFacilities' //酒店设施
+import HotelRoomFacilitiesType from '@/components/hotel/HotelRoomFacilitiesType' //酒店房间设施类型
 export default [
   {
     path: '/',
@@ -72,7 +75,16 @@ export default [
         },
         name: 'HotelImageType'
       },
-      //酒店推荐类型HotelThemeCategory
+      //酒店房间设施类型
+      {
+        path: 'hotelRoomFacilitiesType',
+        components: {
+          default: Home,
+          User: HotelRoomFacilitiesType
+        },
+        name: 'HotelRoomFacilitiesType'
+      },
+      //酒店推荐类型
       {
         path: 'hotelRecommendType',
         components: {
@@ -80,6 +92,24 @@ export default [
           User: HotelRecommendType
         },
         name: 'HotelRecommendType'
+      },
+      //酒店设施类型
+      {
+        path: 'hotelFacilitiesType',
+        components: {
+          default: Home,
+          User: HotelFacilitiesType
+        },
+        name: 'HotelFacilitiesType'
+      },
+      //酒店设施
+      {
+        path: 'hotelFacilities',
+        components: {
+          default: Home,
+          User: HotelFacilities
+        },
+        name: 'HotelFacilities'
       },
       //酒店主题类别
       {

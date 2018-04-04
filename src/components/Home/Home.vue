@@ -164,9 +164,21 @@
                         <router-link to="/home/hotelThemeCategory">酒店主题类别管理</router-link>
                       </li>
                       <li>
+                        <router-link to="/home/hotelFacilities">酒店设施管理</router-link>
+                      </li>
+                      <li>
+                        <router-link to="/home/hotelFacilitiesType">酒店设施类型管理</router-link>
+                      </li>
+                      <li>
+                        <router-link to="/home/hotelRoomFacilitiesType">酒店房间设施类型管理</router-link>
+                      </li>
+                      <li>
                         <router-link to="/home/hotelCityRecommendType">酒店城市推荐类型管理</router-link>
                       </li>
                     </ul>
+                  </li>
+                  <li>
+                    <a href="javascript:;"><i class="icon-coin-yen"></i> <span>美食管理</span></a>
                   </li>
                 </ul>
               </div>
@@ -223,30 +235,24 @@
     },
     computed: mapGetters([
       'transtionActive',
+      'hotelRecommendTypeAllList',
+      'hotelFacilitiesTypeAllList'
     ]),
     created(){
       if (!sessionStorage.getItem('index')) {
         sessionStorage.setItem('index', '0')
       }
-
-      let options = {
-        "loginUserID": "huileyou",
-        "loginUserPass": "123",
-        "operateUserID": "",
-        "operateUserName": "",
-        "pcName": "",
-        //"sm_hm_ID": 1,
-        //"sm_hm_HeightName": "",
-        "sm_hm_IsDelete": 0
+      if(!this.hotelRecommendTypeAllList.length||!this.hotelFacilitiesTypeAllList.length){
+        this.initData().then(()=>{
+        },err=>{
+          this.$notify({
+            message: err,
+            type: 'error'
+          });
+        })
       }
-      this.$store.dispatch('initAdminIntegralWeight',options)
-      .then(()=>{
-      },err=>{
-        this.$notify({
-          message: err,
-          type: 'error'
-        });
-      })
+
+
 //      //初始化跟团游栏目
 //      this.$store.dispatch('initGroupTour',options)
     },
@@ -285,6 +291,47 @@
       }
     },
     methods: {
+      async initData(){
+        //推荐类型所有
+        let options = {
+          "loginUserID": "huileyou",
+          "loginUserPass": "123",
+          "operateUserID": "操作员编码",
+          "operateUserName": "操作员名称",
+          "pcName": "",
+          "ht_it_ID": "",//推荐类型ID
+          "ht_it_Name": "",//推荐类型名称
+          "ht_it_ParentID": "",//推荐类型父ID
+        };
+        await this.$store.dispatch('initHotelRecommendTypeAll',options)
+
+        //设施类型
+        let optionsType = {
+          "loginUserID": "huileyou",
+          "loginUserPass": "123",
+          "operateUserID": "",
+          "operateUserName": "",
+          "pcName": "",
+          "ht_ht_ID": "",//设施类型Id
+          "ht_ht_Name":'',//设施类型名称
+          page:1,
+          rows:50
+        };
+        this.$store.dispatch('initHotelFacilitiesTypeAll',optionsType)
+
+//        let newOptions = {
+//          "loginUserID": "huileyou",
+//          "loginUserPass": "123",
+//          "operateUserID": "",
+//          "operateUserName": "",
+//          "pcName": "",
+//          //"sm_hm_ID": 1,
+//          //"sm_hm_HeightName": "",
+//          "sm_hm_IsDelete": 0
+//        }
+//        await this.$store.dispatch('initAdminIntegralWeight',newOptions)
+
+      },
       //退出
       Quit(){
         this.$router.push({name: 'Login'})

@@ -17,52 +17,52 @@
         </el-form>
       </el-col>
 
-      <!--数据展示-->
-      <el-table
-        :data="hotelRecommendTypeList"
-        highlight-current-row
-        v-loading="isLoading"
-        style="width: 100%">
-        <el-table-column
-          align="center"
-          label="推荐类型编码"
-          prop="ht_it_ID">
-        </el-table-column>
-        <el-table-column
-          align="center"
-          label="推荐类型名称"
-          prop="ht_it_Name">
-        </el-table-column>
-        <el-table-column
-          align="center"
-          label="类型父级名称"
-          prop="ht_it_ParentName">
-        </el-table-column>
-        <el-table-column
-          align="center"
-          label="推荐描述"
-          prop="ht_it_Describe">
-        </el-table-column>
-        <el-table-column
-          align="center"
-          label="图片路径"
-          prop="ht_it_ImagePath">
-        </el-table-column>
-        <el-table-column label="操作" align="center">
-          <template slot-scope="scope">
-            <el-button
-              size="mini"
-              type="primary"
-              @click="Update(scope.row.ht_it_ID)">修改
-            </el-button>
-            <el-button
-              size="mini"
-              type="danger"
-              @click="Delete(scope.row.ht_it_ID)">删除
-            </el-button>
-          </template>
-        </el-table-column>
-      </el-table>
+        <!--数据展示-->
+        <el-table
+          :data="hotelRecommendTypeList"
+          highlight-current-row
+          v-loading="isLoading"
+          style="width: 100%">
+          <el-table-column
+            align="center"
+            label="推荐类型编码"
+            prop="ht_it_ID">
+          </el-table-column>
+          <el-table-column
+            align="center"
+            label="推荐类型名称"
+            prop="ht_it_Name">
+          </el-table-column>
+          <el-table-column
+            align="center"
+            label="类型父级名称"
+            prop="ht_it_ParentName">
+          </el-table-column>
+          <el-table-column
+            align="center"
+            label="推荐描述"
+            prop="ht_it_Describe">
+          </el-table-column>
+          <el-table-column
+            align="center"
+            label="图片路径"
+            prop="ht_it_ImagePath">
+          </el-table-column>
+          <el-table-column label="操作" align="center">
+            <template slot-scope="scope">
+              <el-button
+                size="mini"
+                type="primary"
+                @click="Update(scope.row.ht_it_ID)">修改
+              </el-button>
+              <el-button
+                size="mini"
+                type="danger"
+                @click="Delete(scope.row.ht_it_ID)">删除
+              </el-button>
+            </template>
+          </el-table-column>
+        </el-table>
 
       <!--分页-->
       <div class="block" style="float: right;">
