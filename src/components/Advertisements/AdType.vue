@@ -1,22 +1,21 @@
 <template>
   <div>
     <section id="wrap">
-      <h1 class="userClass">供应商利润管理</h1>
-
+      <h1 class="userClass">广告类型管理</h1>
       <el-col :span="24" class="formSearch">
         <el-form :inline="true">
           <el-form-item>
-            <span>供应商利润筛选:</span>
+            <span>广告类型名称筛选:</span>
           </el-form-item>
           <el-form-item>
-            <el-input type="text" v-model="userName" auto-complete="off"size="small"></el-input>
+            <el-input type="text" v-model="adTypeName" auto-complete="off" placeholder="广告类型名称" size="small"></el-input>
           </el-form-item>
           <el-form-item>
             <el-button type="primary" @click="search" size="small">查询</el-button>
           </el-form-item>
         </el-form>
       </el-col>
-      数据展示
+      <!--数据展示-->
       <el-table
         :data="adTypeList"
         highlight-current-row
@@ -71,7 +70,17 @@
           prop="sm_at_Remark">
         </el-table-column>
       </el-table>
-
+      <!--分页-->
+      <div class="block" style="float: right;">
+        <el-pagination
+          @current-change="handleCurrentChange"
+          :page-size="5"
+          layout="total, prev, pager, next"
+          :total="total"
+          v-show="total"
+        >
+        </el-pagination>
+      </div>
     </section>
   </div>
 </template>
@@ -81,12 +90,13 @@
     name: '',
     data(){
       return {
-        isLoading:false,
-        total:0,
+        isOff:true,
         formLabelWidth:'120px',
-        userName:'',
-        addDialog:false,//添加弹窗
-        updateDialog:false,//修改弹窗
+        isLoading:false,
+        adTypeName:'',
+        addDialog:false,
+        updateDialog:false,
+        total:0,
         addOptions:{
           "loginUserID": "huileyou",
           "loginUserPass": "123",
@@ -94,29 +104,37 @@
           "operateUserName": "",
           "pcName": "",
           "data": {
-            "sm_partnerTypeID": '',
-            "sm_apf_Provice": '',
-            "sm_apf_City": '',
-            "sm_apf_Percent": '',
+            "sm_at_ID": "",//广告类型编号
+            "sm_at_PositionInfoID": "",//位置信息编码
+            "sm_at_Name": "",//广告类型名称
+            "sm_at_Times": "",//次数
+            "sm_at_Unit": "",//单位
+            "sm_at_Price": "",//收费金额
+            "sm_at_CreateTime": "",//创建时间
+            "sm_at_Remark": "",//备注
           }
-        },
-        //添加参数
+        }
       }
     },
     computed: mapGetters([
+      'AdTypeList',
       'adTypeList',
+      'updateAdTypeObj',
+      'adTypeNameList'
     ]),
     created(){
-      this.initContent().then(()=>{},err=>{
-        this.$notify({
-          message: err,
-          type: 'error'
-        });
-      })
+      this.initData(this.adTypeName)
     },
     methods: {
-      async initContent() {
-        //查询广告类型
+      //分页
+      handleCurrentChange(num){
+        this.initData(this.adTypeName,num)
+      },
+      //查询
+      search(){
+        this.initData(this.adTypeName)
+      },
+      initData(name,page){
         let options = {
           "loginUserID": "huileyou",
           "loginUserPass": "123",
@@ -125,20 +143,29 @@
           "pcName": "",
           "sm_at_ID": "",//广告类型编号
           "sm_at_PositionInfoID": "",//位置信息编码
-          "sm_at_Name": "",//广告类型名称
+          "sm_at_Name": name?name:'',//广告类型名称
           "sm_at_Times": "",//次数
           "sm_at_Unit": "",//单位
           "sm_at_Price": "",//收费金额
           "sm_at_CreateTime": "",//创建时间
           "sm_at_Remark": "",//备注
+          "isDelete": 0,
+          "page": page?page:1,
+          "rows": 10
         };
-        await this.$store.dispatch('initAdTypeList', options)
+        this.isLoading = true;
+        this.$store.dispatch('initAdTypeList',options)
+          .then(total=>{
+            this.total = total;
+            this.isLoading = false;
+          },err=>{
+            this.$notify({
+              message: err,
+              type: 'error'
+            });
+          })
       },
-      search(){
-        this.initContent()
-        console.log(this.adTypeList)
-      }
-    }
+    },
   }
 </script>
 <style scoped>

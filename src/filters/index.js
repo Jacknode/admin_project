@@ -189,3 +189,14 @@ export const getHotName = val=>{
       return '未知';
   }
 };
+//广告申请是否通过
+export const getAdApplyPass = val=>{
+  switch (Number(val)) {
+    case 0:
+      return '通过';
+    case 1:
+      return '不通过';
+    default:
+      return '未知';
+  }
+};

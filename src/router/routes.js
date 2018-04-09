@@ -27,9 +27,6 @@ import AdminHuileyouReturn from '@/components/admin/AdminHuileyouReturn'
 import AdminIntegralWeight from '@/components/admin/AdminIntegralWeight'
 //积分权重
 import AdminIntegralType from '@/components/admin/AdminIntegralType'
-//广告类型
-import AdType from '@/components/Advertisements/AdType'
-
 /*-------------------------------------门票管理----------------------------------------------*/
 import TicketTheme from '@/components/ticket/ticketTheme' //门票主题hotelImageType
 
@@ -41,6 +38,17 @@ import HotelCityRecommendType from '@/components/hotel/HotelCityRecommendType' /
 import HotelFacilitiesType from '@/components/hotel/HotelFacilitiesType' //酒店设施类型
 import HotelFacilities from '@/components/hotel/HotelFacilities' //酒店设施
 import HotelRoomFacilitiesType from '@/components/hotel/HotelRoomFacilitiesType' //酒店房间设施类型
+/*-------------------------------------广告管理----------------------------------------------*/
+//广告类型
+import AdType from '@/components/Advertisements/AdType'
+//广告收费方式
+import AdChargeWay from '@/components/Advertisements/AdChargeWay'
+//广告位置
+import AdPosition from '@/components/Advertisements/AdPosition'
+//广告申请
+import AdApply from '@/components/Advertisements/AdApply'
+//广告类型收费方式
+import AdTypeChargeMode from '@/components/Advertisements/AdTypeChargeMode'
 export default [
   {
     path: '/',
@@ -54,6 +62,52 @@ export default [
       default: Home
     },
     children:[
+      /*-------------------------------------广告管理----------------------------------------------*/
+      //广告类型收费方式
+      {
+        path: 'adTypeChargeMode',
+        components: {
+          default: Home,
+          User: AdTypeChargeMode
+        },
+        name: 'AdTypeChargeMode'
+      },
+      //广告申请
+      {
+        path: 'adApply',
+        components: {
+          default: Home,
+          User: AdApply
+        },
+        name: 'AdApply'
+      },
+      //广告类型
+      {
+        path: 'adType',
+        components: {
+          default: Home,
+          User: AdType
+        },
+        name: 'AdType'
+      },
+      //广告收费方式
+      {
+        path: 'adChargeWay',
+        components: {
+          default: Home,
+          User: AdChargeWay
+        },
+        name: 'AdChargeWay'
+      },
+      //广告位置
+      {
+        path: 'adPosition',
+        components: {
+          default: Home,
+          User: AdPosition
+        },
+        name: 'AdPosition'
+      },
       /*-------------------------------------门票管理----------------------------------------------*/
       //门票主题
       {
