@@ -42,7 +42,10 @@
         <el-table-column
           align="center"
           label="图片路径"
-          prop="ht_ai_Image">
+        >
+          <template slot-scope="scope">
+            <img v-lazy="scope.row.ht_ai_Image" alt="" style="width: 100px;height: 100px;">
+          </template>
         </el-table-column>
         <el-table-column label="操作" align="center">
           <template slot-scope="scope">
@@ -207,6 +210,7 @@
         areaPid:3337
       }
       this.$store.dispatch('initHotelProvinceData', options)
+      this.initData(1)
     },
     methods: {
       //选中省

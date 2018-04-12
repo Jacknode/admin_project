@@ -186,6 +186,7 @@
       'adminAgentsList'
     ]),
     created(){
+      this.initData('',1)
     },
     methods: {
       handleSelect(key, keyPath) {

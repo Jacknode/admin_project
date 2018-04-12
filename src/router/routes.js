@@ -38,6 +38,8 @@ import HotelCityRecommendType from '@/components/hotel/HotelCityRecommendType' /
 import HotelFacilitiesType from '@/components/hotel/HotelFacilitiesType' //酒店设施类型
 import HotelFacilities from '@/components/hotel/HotelFacilities' //酒店设施
 import HotelRoomFacilitiesType from '@/components/hotel/HotelRoomFacilitiesType' //酒店房间设施类型
+import HotelIconGallery from '@/components/hotel/HotelIconGallery' //酒店图标库
+import HotelRoomFacilities from '@/components/hotel/HotelRoomFacilities' //酒店房间设施
 /*-------------------------------------广告管理----------------------------------------------*/
 //广告类型
 import AdType from '@/components/Advertisements/AdType'
@@ -49,6 +51,10 @@ import AdPosition from '@/components/Advertisements/AdPosition'
 import AdApply from '@/components/Advertisements/AdApply'
 //广告类型收费方式
 import AdTypeChargeMode from '@/components/Advertisements/AdTypeChargeMode'
+
+//上传App
+import UploadApp from '@/components/App/UploadApp'
+
 export default [
   {
     path: '/',
@@ -62,6 +68,14 @@ export default [
       default: Home
     },
     children:[
+      {
+        path: 'UploadApp',
+        components: {
+          default: Home,
+          User: UploadApp
+        },
+        name: 'UploadApp'
+      },
       /*-------------------------------------广告管理----------------------------------------------*/
       //广告类型收费方式
       {
@@ -137,6 +151,24 @@ export default [
           User: HotelRoomFacilitiesType
         },
         name: 'HotelRoomFacilitiesType'
+      },
+      //酒店房间设施
+      {
+        path: 'hotelRoomFacilities',
+        components: {
+          default: Home,
+          User: HotelRoomFacilities
+        },
+        name: 'HotelRoomFacilities'
+      },
+      //酒店图标库
+      {
+        path: 'hotelIconGallery',
+        components: {
+          default: Home,
+          User: HotelIconGallery
+        },
+        name: 'HotelIconGallery'
       },
       //酒店推荐类型
       {

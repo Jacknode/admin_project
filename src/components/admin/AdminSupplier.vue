@@ -247,6 +247,9 @@
     computed: mapGetters([
       'adminSupplierList'
     ]),
+    created(){
+      this.initData('',1)
+    },
     methods: {
       //分页
       handleCurrentChange(num){

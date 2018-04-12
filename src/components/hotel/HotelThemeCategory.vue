@@ -145,6 +145,7 @@
       'updateHotelThemeCategoryObj'
     ]),
     created(){
+      this.initData('',1);
     },
     methods: {
       //分页

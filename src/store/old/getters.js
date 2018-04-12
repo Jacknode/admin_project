@@ -23,4 +23,5 @@ export default {
   updateAdminIntegralWeightObj: state => state.updateAdminIntegralWeightObj,
   adminIntegralTypeList: state => state.adminIntegralTypeList,
   updateAdminIntegralTypeObj: state => state.updateAdminIntegralTypeObj,
+  uploadAppList: state => state.uploadAppList,
 }

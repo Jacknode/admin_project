@@ -200,3 +200,29 @@ export const getAdApplyPass = val=>{
       return '未知';
   }
 };
+//App类型
+export const getAppType = val=>{
+  switch (Number(val)) {
+    case 0:
+      return 'android';
+    case 1:
+      return 'ios';
+    case 2:
+      return '电脑';
+    default:
+      return '未知';
+  }
+};
+//审核状态
+export const getStatue = val=>{
+  switch (Number(val)) {
+    case 0:
+      return '审核中';
+    case 1:
+      return '审核成功';
+    case 2:
+      return '审核失败';
+    default:
+      return '未知';
+  }
+}

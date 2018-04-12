@@ -96,6 +96,9 @@ const mutations = {
       }
       return false;
     })[0]
+  },
+  initUploadApp(state,data){
+    state.uploadAppList = data;
   }
 };
 export default mutations

@@ -1,14 +1,15 @@
 <template>
   <div>
+
     <section id="wrap">
-      <h1 class="userClass">酒店设施管理</h1>
+      <h1 class="userClass">酒店房间设施管理</h1>
       <el-col :span="24" class="formSearch">
         <el-form :inline="true">
           <el-form-item>
-            <span>设施名称筛选:</span>
+            <span>房间设施名称筛选:</span>
           </el-form-item>
           <el-form-item>
-            <el-input type="text" v-model="facilitiesName" auto-complete="off" placeholder="设施名称" size="small"></el-input>
+            <el-input type="text" v-model="facilitiesName" auto-complete="off" placeholder="房间设施名称" size="small"></el-input>
           </el-form-item>
           <el-form-item>
             <el-button type="primary" @click="search" size="small">查询</el-button>
@@ -19,49 +20,44 @@
 
       <!--数据展示-->
       <el-table
-        :data="hotelFacilitiesList"
+        :data="hotelRoomFacilitiesList"
         highlight-current-row
         v-loading="isLoading"
         style="width: 100%">
         <el-table-column
           align="center"
-          label="设施编码"
-          prop="ht_hd_ID">
+          label="房间设施编码"
+          prop="ht_rh_ID">
         </el-table-column>
         <el-table-column
           align="center"
-          label="设施名称"
-          prop="ht_hd_Name">
+          label="房间设施名称"
+          prop="ht_rh_Name">
         </el-table-column>
         <el-table-column
           align="center"
-          label="设施类型名称"
+          label="房间设施类型名称"
           prop="ht_hd_HardTypeName">
         </el-table-column>
         <el-table-column
           align="center"
           label="是否热门"
-          prop="ht_tt_IsHot">
+        >
           <template slot-scope="props">
-            <span>{{props.row.ht_hd_IsHot | getHotName}}</span>
+            <span>{{props.row.ht_rh_IsHot | getHotName}}</span>
           </template>
-        </el-table-column>
-        <el-table-column
-          align="center"
-          label="备注"
-          prop="ht_hd_Remark">
         </el-table-column>
         <el-table-column label="操作" align="center">
           <template slot-scope="scope">
             <el-button
               size="mini"
               type="primary"
-              @click="Update(scope.row.ht_hd_ID)">修改
+              @click="Update(scope.row.ht_rh_ID)">修改
             </el-button>
             <el-button
               size="mini"
               type="danger"
-              @click="Delete(scope.row.ht_hd_ID)">删除
+              @click="Delete(scope.row.ht_rh_ID)">删除
             </el-button>
           </template>
         </el-table-column>
@@ -79,33 +75,30 @@
         </el-pagination>
       </div>
 
-      <!--添加设施-->
-      <el-dialog title="添加设施" :visible.sync="addDialog">
+      <!--添加房间设施-->
+      <el-dialog title="添加房间设施" :visible.sync="addDialog">
         <el-form :model="addOptions">
-          <el-form-item label="设施类型选择:" :label-width="formLabelWidth">
-            <el-select v-model="addOptions.data.ht_hd_HardTypeID" placeholder="请选择" size="small">
+          <el-form-item label="房间设施类型:" :label-width="formLabelWidth">
+            <el-select v-model="addOptions.data.ht_rh_RoomHardTypeID" placeholder="请选择房间设施类型" size="small">
               <el-option
-                v-for="item in hotelFacilitiesTypeAllList"
-                :key="item.ht_ht_ID"
-                :label="item.ht_ht_Name"
-                :value="item.ht_ht_ID">
+                v-for="item in hotelRoomFacilitiesTypeAllList"
+                :key="item.ht_rht_ID"
+                :label="item.ht_rht_Name"
+                :value="item.ht_rht_ID">
               </el-option>
             </el-select>
           </el-form-item>
           <el-form-item label="设施名称:" :label-width="formLabelWidth">
-            <el-input v-model="addOptions.data.ht_hd_Name" placeholder="请输入设施名称"></el-input>
+            <el-input v-model="addOptions.data.ht_rh_Name" placeholder="请输入设施名称"></el-input>
           </el-form-item>
           <el-form-item label="是否热门:" :label-width="formLabelWidth">
             <el-switch
-              v-model="addOptions.data.ht_hd_IsHot"
+              v-model="addOptions.data.ht_rh_IsHot"
               active-color="#13ce66"
               inactive-color="#ff4949"
               active-value="1"
               inactive-value="0">
             </el-switch>
-          </el-form-item>
-          <el-form-item label="备注:" :label-width="formLabelWidth">
-            <el-input v-model="addOptions.data.ht_hd_Remark" placeholder="请输入备注"></el-input>
           </el-form-item>
         </el-form>
         <div slot="footer" class="dialog-footer">
@@ -114,33 +107,30 @@
         </div>
       </el-dialog>
 
-      <!--修改设施-->
-      <el-dialog title="修改设施" :visible.sync="updateDialog">
-        <el-form :model="addOptions">
-          <el-form-item label="设施类型选择:" :label-width="formLabelWidth">
-            <el-select v-model="updateHotelFacilitiesObj.ht_hd_HardTypeID" placeholder="请选择" size="small">
+      <!--修改房间设施-->
+      <el-dialog title="修改房间设施" :visible.sync="updateDialog">
+        <el-form :model="updateHotelRoomFacilitiesObj">
+          <el-form-item label="房间设施类型:" :label-width="formLabelWidth">
+            <el-select v-model="updateHotelRoomFacilitiesObj.ht_rh_RoomHardTypeID" placeholder="请选择房间设施类型" size="small">
               <el-option
-                v-for="item in hotelFacilitiesTypeAllList"
-                :key="item.ht_ht_ID"
-                :label="item.ht_ht_Name"
-                :value="item.ht_ht_ID">
+                v-for="item in hotelRoomFacilitiesTypeAllList"
+                :key="item.ht_rht_ID"
+                :label="item.ht_rht_Name"
+                :value="item.ht_rht_ID">
               </el-option>
             </el-select>
           </el-form-item>
           <el-form-item label="设施名称:" :label-width="formLabelWidth">
-            <el-input v-model="updateHotelFacilitiesObj.ht_hd_Name" placeholder="请输入设施名称"></el-input>
+            <el-input v-model="updateHotelRoomFacilitiesObj.ht_rh_Name" placeholder="请输入设施名称"></el-input>
           </el-form-item>
           <el-form-item label="是否热门:" :label-width="formLabelWidth">
             <el-switch
-              v-model="updateHotelFacilitiesObj.ht_hd_IsHot"
+              v-model="updateHotelRoomFacilitiesObj.ht_rh_IsHot"
               active-color="#13ce66"
               inactive-color="#ff4949"
               active-value="1"
               inactive-value="0">
             </el-switch>
-          </el-form-item>
-          <el-form-item label="备注:" :label-width="formLabelWidth">
-            <el-input v-model="updateHotelFacilitiesObj.ht_hd_Remark" placeholder="请输入备注"></el-input>
           </el-form-item>
         </el-form>
         <div slot="footer" class="dialog-footer">
@@ -166,23 +156,21 @@
         addOptions:{
           "loginUserID": "huileyou",
           "loginUserPass": "123",
-          "operateUserID": "",
-          "operateUserName": "",
+          "operateUserID": "操作员编码",
+          "operateUserName": "操作员名称",
           "pcName": "",
           "data": {
-            "ht_hd_Name": "",//设施名称
-            "ht_hd_HardTypeID": "",//设施类型ID
-            "ht_hd_IsHot": "",//是否热门
-            "ht_hd_Remark": "",//备注
+            "ht_rh_Name": "",//设施名称
+            "ht_rh_RoomHardTypeID": "",//房间设施类型ID
+            "ht_rh_IsHot": "",//是否热门
           }
         }
-
       }
     },
     computed: mapGetters([
-      'hotelFacilitiesList',
-      'hotelFacilitiesTypeAllList',
-      'updateHotelFacilitiesObj'
+      'hotelRoomFacilitiesList',
+      'hotelRoomFacilitiesTypeAllList',
+      'updateHotelRoomFacilitiesObj'
     ]),
     created(){
       this.initData('',1)
@@ -190,33 +178,33 @@
     methods: {
       //分页
       handleCurrentChange(num){
-        this.initData(this.facilitiesName,num)
+        this.initData(this.facilitiesName,num);
       },
       initData(name,page){
         let options = {
           "loginUserID": "huileyou",
           "loginUserPass": "123",
-          "operateUserID": "",
-          "operateUserName": "",
+          "operateUserID": "操作员编码",
+          "operateUserName": "操作员名称",
           "pcName": "",
-          "ht_hd_ID": "",//设施编码
-          "ht_hd_Name": name?name:'',//设施名称
-          "ht_hd_HardTypeID": "",//设施类型ID
-          "ht_hd_IsHot": "",//是否热门
+          "ht_rh_ID": "",//房型设施
+          "ht_rh_Name": name?name:'',//设施名称
+          "ht_rh_RoomHardTypeID": "",//房间设施类型ID
+          "ht_rh_IsHot": "",//是否热门
           "page":page?page:1,//页码编号
           "rows":"5",//单页显示数量
         };
         this.isLoading = true;
-        this.$store.dispatch('initHotelFacilities',options)
-          .then(total=>{
-            this.total = total;
-            this.isLoading = false;
-          },err=>{
-            this.$notify({
-              message: err,
-              type: 'error'
-            });
-          })
+        this.$store.dispatch('initHotelRoomFacilities',options)
+        .then(total=>{
+          this.total = total;
+          this.isLoading = false;
+        },err=>{
+          this.$notify({
+            message: err,
+            type: 'error'
+          });
+        })
       },
       //查询
       search(){
@@ -229,7 +217,7 @@
       },
       //添加提交
       addSubmit(){
-        this.$store.dispatch('AddHotelFacilities',this.addOptions)
+        this.$store.dispatch('AddHotelRoomFacilities',this.addOptions)
           .then((suc)=>{
             this.$notify({
               message: suc,
@@ -248,19 +236,19 @@
       Update(id){
         this.updateDialog = true;
         this.$store.commit('setTranstionFalse');
-        this.$store.commit('initUpdateHotelFacilities',id);
+        this.$store.commit('initUpdateHotelRoomFacilities',id);
       },
       //修改提交
       updateSubmit(){
         let updateOptions = {
           "loginUserID": "huileyou",
           "loginUserPass": "123",
-          "operateUserID": "",
-          "operateUserName": "",
+          "operateUserID": "操作员编码",
+          "operateUserName": "lb",
           "pcName": "",
-          "data": this.updateHotelFacilitiesObj
+          "data": this.updateHotelRoomFacilitiesObj
         };
-        this.$store.dispatch('UpdateHotelFacilities',updateOptions)
+        this.$store.dispatch('UpdateHotelRoomFacilities',updateOptions)
           .then((suc)=>{
             this.$notify({
               message: suc,
@@ -284,10 +272,10 @@
           "operateUserName": "操作员名称",
           "pcName": "",
           "data": {
-            "ht_hd_ID": id//设施编码
+            " ht_rht_ID": id//房型设施
           }
-        };
-        this.$store.dispatch('DeleteHotelFacilities',deleteOptions)
+        }
+        this.$store.dispatch('DeleteHotelRoomFacilities',deleteOptions)
         .then((suc)=>{
           this.$notify({
             message: suc,

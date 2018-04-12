@@ -22,4 +22,5 @@ export default {
   updateAdminIntegralWeightObj:{},//修改积分权重obj
   adminIntegralTypeList:[],//积分类型
   updateAdminIntegralTypeObj:{},//修改积分类型obj
+  uploadAppList:[],//上传app
 };

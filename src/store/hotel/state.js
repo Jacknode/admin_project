@@ -20,4 +20,9 @@ export default {
   updateHotelFacilitiesObj:{},//修改酒店设施obj
   hotelRoomFacilitiesTypeList:[],//酒店房间设施类型
   updateHotelRoomFacilitiesTypeObj:{},//修改酒店房间设施类型obj
+  hotelIconGalleryList:[],//酒店图片库
+  updateHotelIconGalleryObj:{},//修改图标库obj
+  hotelRoomFacilitiesList:[],//房间设施
+  hotelRoomFacilitiesTypeAllList:[],//酒店房间设施类型所有
+  updateHotelRoomFacilitiesObj:{},//修改酒店房间设施obj
 }

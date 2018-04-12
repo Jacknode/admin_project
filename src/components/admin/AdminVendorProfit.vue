@@ -204,12 +204,13 @@
       'updateAdminVendorProfitObj'
     ]),
     created(){
-     this.initContent().then(()=>{},err=>{
-       this.$notify({
-         message: err,
-         type: 'error'
-       });
-     })
+      this.initData(1)
+      this.initContent().then(()=>{},err=>{
+         this.$notify({
+           message: err,
+           type: 'error'
+         });
+      })
     },
     methods: {
       //选中省

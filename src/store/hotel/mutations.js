@@ -92,5 +92,31 @@ export default {
       }
       return false;
     })[0]
+  },
+  initHotelIconGallery(state,data){
+    state.hotelIconGalleryList = data;
+  },
+  initUpdateHotelIconGallery(state,id){
+    state.updateHotelIconGalleryObj = state.hotelIconGalleryList.filter(item=>{
+      if(item.ht_ie_ID===id){
+        return true;
+      }
+      return false;
+    })[0]
+  },
+  initHotelRoomFacilities(state,data){
+    state.hotelRoomFacilitiesList = data;
+  },
+  initHotelRoomFacilitiesTypeAll(state,data){
+    state.hotelRoomFacilitiesTypeAllList = data;
+  },
+  initUpdateHotelRoomFacilities(state,id){
+    state.updateHotelRoomFacilitiesObj = state.hotelRoomFacilitiesList.filter(item=>{
+      if(item.ht_rh_ID==id){
+        item.ht_rh_IsHot = item.ht_rh_IsHot+'';
+        return true;
+      }
+      return false;
+    })[0]
   }
 }

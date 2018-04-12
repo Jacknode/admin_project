@@ -23,8 +23,8 @@
         move:[],
         logining: false,
         ruleForm2: {
-          account: '001',
-          checkPass: '123'
+          account: '',
+          checkPass: ''
         },
         rules2: {
           account: [

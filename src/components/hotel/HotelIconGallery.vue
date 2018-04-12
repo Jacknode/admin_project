@@ -1,14 +1,14 @@
 <template>
   <div>
     <section id="wrap">
-      <h1 class="userClass">酒店设施类型</h1>
+      <h1 class="userClass">酒店图标库</h1>
       <el-col :span="24" class="formSearch">
         <el-form :inline="true">
           <el-form-item>
-            <span>设施类型名称筛选:</span>
+            <span>图标名称筛选:</span>
           </el-form-item>
           <el-form-item>
-            <el-input type="text" v-model="facilitiesName" auto-complete="off" placeholder="设施类型名称" size="small"></el-input>
+            <el-input type="text" v-model="iconName" auto-complete="off" placeholder="图标名称" size="small"></el-input>
           </el-form-item>
           <el-form-item>
             <el-button type="primary" @click="search" size="small">查询</el-button>
@@ -19,31 +19,36 @@
 
       <!--数据展示-->
       <el-table
-        :data="hotelFacilitiesTypeList"
+        :data="hotelIconGalleryList"
         highlight-current-row
         v-loading="isLoading"
         style="width: 100%">
         <el-table-column
           align="center"
-          label="设施类型编码"
-          prop="ht_ht_ID">
+          label="图标编码"
+          prop="ht_ie_ID">
         </el-table-column>
         <el-table-column
           align="center"
-          label="设施类型编码名称"
-          prop="ht_ht_Name">
+          label="图标名称"
+          prop="ht_ie_Name">
         </el-table-column>
+        <!--<el-table-column-->
+          <!--align="center"-->
+          <!--label="图片路径"-->
+          <!--prop="ht_ie_Image">-->
+        <!--</el-table-column>-->
         <el-table-column label="操作" align="center">
           <template slot-scope="scope">
             <el-button
               size="mini"
               type="primary"
-              @click="Update(scope.row.ht_ht_ID)">修改
+              @click="Update(scope.row.ht_ie_ID)">修改
             </el-button>
             <el-button
               size="mini"
               type="danger"
-              @click="Delete(scope.row.ht_ht_ID)">删除
+              @click="Delete(scope.row.ht_ie_ID)">删除
             </el-button>
           </template>
         </el-table-column>
@@ -61,11 +66,11 @@
         </el-pagination>
       </div>
 
-      <!--添加设施类型-->
-      <el-dialog title="添加设施类型" :visible.sync="addDialog">
+      <!--添加图标-->
+      <el-dialog title="添加图标" :visible.sync="addDialog">
         <el-form :model="addOptions">
-          <el-form-item label="设施类型名称:" :label-width="formLabelWidth">
-            <el-input v-model="addOptions.data.ht_ht_Name" placeholder="请输入设施类型名称"></el-input>
+          <el-form-item label="图标名称:" :label-width="formLabelWidth">
+            <el-input v-model="addOptions.data.ht_ie_Name" placeholder="请输入图标名称"></el-input>
           </el-form-item>
         </el-form>
         <div slot="footer" class="dialog-footer">
@@ -74,11 +79,11 @@
         </div>
       </el-dialog>
 
-      <!--修改设施类型-->
-      <el-dialog title="修改设施类型" :visible.sync="updateDialog">
-        <el-form :model="updateHotelFacilitiesTypeObj">
-          <el-form-item label="设施类型名称:" :label-width="formLabelWidth">
-            <el-input v-model="updateHotelFacilitiesTypeObj.ht_ht_Name" placeholder="请输入设施类型名称"></el-input>
+      <!--修改图标-->
+      <el-dialog title="修改图标" :visible.sync="updateDialog">
+        <el-form :model="updateHotelIconGalleryObj">
+          <el-form-item label="图标名称:" :label-width="formLabelWidth">
+            <el-input v-model="updateHotelIconGalleryObj.ht_ie_Name" placeholder="请输入图标名称"></el-input>
           </el-form-item>
         </el-form>
         <div slot="footer" class="dialog-footer">
@@ -95,7 +100,9 @@
     name: '',
     data(){
       return {
-        facilitiesName:'',
+        iconName:'',
+        ImageURL:[],
+        ImageURL1:[],
         total:0,
         isLoading:false,
         addDialog:false,
@@ -108,14 +115,16 @@
           "operateUserName": "操作员名称",
           "pcName": "",
           "data": {
-            "ht_ht_Name": "",//设施类型名称
+            "ht_ie_Name": "",//图标名称
+            "ht_ie_Image": "",//图标
+            "ht_id_Remark": "",//备注
           }
         }
       }
     },
     computed: mapGetters([
-      'hotelFacilitiesTypeList',
-      'updateHotelFacilitiesTypeObj'
+      'hotelIconGalleryList',
+      'updateHotelIconGalleryObj'
     ]),
     created(){
       this.initData('',1)
@@ -123,27 +132,29 @@
     methods: {
       //分页
       handleCurrentChange(num){
-        this.initData(this.facilitiesName,num)
+        this.initData(this.iconName,num)
       },
       //查询
       search(){
-        this.initData(this.facilitiesName,1)
+        this.initData(this.iconName)
       },
       //初始化
       initData(name,page){
         let options = {
           "loginUserID": "huileyou",
           "loginUserPass": "123",
-          "operateUserID": "",
-          "operateUserName": "",
+          "operateUserID": "操作员编码",
+          "operateUserName": "操作员名称",
           "pcName": "",
-          "ht_ht_ID": "",//设施类型Id
-          "ht_ht_Name": name?name:'',//设施类型名称
-          "page":page?page:1,//页码编号
-          "rows":"5",//单页显示数量
-        };
+          "ht_ie_ID": "",//图标库ID
+          "ht_ie_Name": name?name:'',//图标名称
+          "ht_ie_Image": '',//图标
+          "ht_id_Remark": "",//备注
+          page:page?page:1,
+          rows:'5'
+        }
         this.isLoading = true;
-        this.$store.dispatch('initHotelFacilitiesType',options)
+        this.$store.dispatch('initHotelIconGallery',options)
           .then(total=>{
             this.total = total;
             this.isLoading = false;
@@ -161,26 +172,26 @@
       },
       //添加提交
       addSubmit(){
-        this.$store.dispatch('AddHotelFacilitiesType',this.addOptions)
-        .then((suc)=>{
-          this.$notify({
-            message: suc,
-            type: 'success'
+        this.$store.dispatch('AddHotelIconGallery',this.addOptions)
+          .then((suc)=>{
+            this.$notify({
+              message: suc,
+              type: 'success'
+            });
+            this.initData(this.iconName,1)
+          },err=>{
+            this.$notify({
+              message: err,
+              type: 'error'
+            });
           });
-          this.initData(this.facilitiesName,1)
-        },err=>{
-          this.$notify({
-            message: err,
-            type: 'error'
-          });
-        });
         this.addDialog = false;
       },
-      //修改
       Update(id){
+        this.$store.commit('initUpdateHotelIconGallery',id);
         this.updateDialog = true;
         this.$store.commit('setTranstionFalse');
-        this.$store.commit('initUpdateHotelFacilitiesType',id);
+
       },
       //修改提交
       updateSubmit(){
@@ -190,21 +201,21 @@
           "operateUserID": "操作员编码",
           "operateUserName": "操作员名称",
           "pcName": "",
-          "data": this.updateHotelFacilitiesTypeObj
-        }
-        this.$store.dispatch('UpdateHotelFacilitiesTypee',updateOptions)
-        .then((suc)=>{
-          this.$notify({
-            message: suc,
-            type: 'success'
+          "data": this.updateHotelIconGalleryObj
+        };
+        this.$store.dispatch('UpdateHotelIconGallery',updateOptions)
+          .then((suc)=>{
+            this.$notify({
+              message: suc,
+              type: 'success'
+            });
+            this.initData(this.iconName,1)
+          },err=>{
+            this.$notify({
+              message: err,
+              type: 'error'
+            });
           });
-          this.initData(this.facilitiesName,1)
-        },err=>{
-          this.$notify({
-            message: err,
-            type: 'error'
-          });
-        });
         this.updateDialog = false;
       },
       //删除
@@ -216,22 +227,22 @@
           "operateUserName": "操作员名称",
           "pcName": "",
           "data": {
-            "ht_ht_ID": id//设施类型Id
+            "ht_ie_ID": id//图标库ID
           }
         };
-        this.$store.dispatch('DeleteHotelFacilitiesType',deleteOptions)
-        .then((suc)=>{
-          this.$notify({
-            message: suc,
-            type: 'success'
+        this.$store.dispatch('DeleteHotelIconGallery',deleteOptions)
+          .then((suc)=>{
+            this.$notify({
+              message: suc,
+              type: 'success'
+            });
+            this.initData(this.iconName,1)
+          },err=>{
+            this.$notify({
+              message: err,
+              type: 'error'
+            });
           });
-          this.initData(this.facilitiesName,1)
-        },err=>{
-          this.$notify({
-            message: err,
-            type: 'error'
-          });
-        });
       }
     },
   }

@@ -174,6 +174,7 @@
       'updateAdminAgentsProfitObj'
     ]),
     created(){
+      this.initData(1)
       //查询合作类型
       let options = {
         "loginUserID": "huileyou",

@@ -20,4 +20,9 @@ export default {
   updateHotelFacilitiesObj: state => state.updateHotelFacilitiesObj,
   hotelRoomFacilitiesTypeList: state => state.hotelRoomFacilitiesTypeList,
   updateHotelRoomFacilitiesTypeObj: state => state.updateHotelRoomFacilitiesTypeObj,
+  hotelIconGalleryList: state => state.hotelIconGalleryList,
+  updateHotelIconGalleryObj: state => state.updateHotelIconGalleryObj,
+  hotelRoomFacilitiesList: state => state.hotelRoomFacilitiesList,
+  hotelRoomFacilitiesTypeAllList: state => state.hotelRoomFacilitiesTypeAllList,
+  updateHotelRoomFacilitiesObj: state => state.updateHotelRoomFacilitiesObj,
 }

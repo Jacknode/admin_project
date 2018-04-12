@@ -178,7 +178,7 @@
       'updateHotelRecommendTypeObj'
     ]),
     created(){
-      this.initData(this.recommendName)
+      this.initData(this.recommendName,1)
     },
     methods: {
       //分页

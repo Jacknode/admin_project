@@ -119,6 +119,7 @@
       'updateHotelImageTypeObj'
     ]),
     created(){
+      this.initData('',1)
     },
     methods: {
       //分页
@@ -213,7 +214,7 @@
             "loginUserID": "huileyou",
             "loginUserPass": "123",
             "operateUserID": "操作员编码",
-            "operateUserName": "操作员名称",
+            "operateUserName": "lb",
             "pcName": "",
             "data": {
               "ht_it_ID": id//图片类型编码

@@ -176,6 +176,12 @@
                         <router-link to="/home/hotelFacilities">酒店设施管理</router-link>
                       </li>
                       <li>
+                        <router-link to="/home/hotelRoomFacilities">酒店房间设施管理</router-link>
+                      </li>
+                      <li>
+                        <router-link to="/home/hotelIconGallery">酒店图标库管理</router-link>
+                      </li>
+                      <li>
                         <router-link to="/home/hotelFacilitiesType">酒店设施类型管理</router-link>
                       </li>
                       <li>
@@ -188,6 +194,14 @@
                   </li>
                   <li>
                     <a href="javascript:;"><i class="icon-coin-yen"></i> <span>美食管理</span></a>
+                  </li>
+                  <li>
+                    <a href="javascript:;"><i class="icon-ticket"></i> <span>上传App</span></a>
+                    <ul>
+                      <li>
+                        <router-link to="/home/uploadApp">上传管理</router-link>
+                      </li>
+                    </ul>
                   </li>
                 </ul>
               </div>
@@ -326,7 +340,19 @@
           page:1,
           rows:50
         };
-        this.$store.dispatch('initHotelFacilitiesTypeAll',optionsType)
+        await this.$store.dispatch('initHotelFacilitiesTypeAll',optionsType)
+
+        //房间设施类型所有
+        let roomOptionsType = {
+          "loginUserID": "huileyou",
+          "loginUserPass": "123",
+          "operateUserID": "操作员编码",
+          "operateUserName": "操作员名称",
+          "pcName": "",
+          "ht_rht_ID": "",//房间设施类型ID
+          "ht_rht_Name": "",//类型名称
+        }
+        await this.$store.dispatch('initHotelRoomFacilitiesTypeAll',roomOptionsType)
 
 //        let newOptions = {
 //          "loginUserID": "huileyou",
