@@ -1,3 +1,6 @@
+/**
+ * Created by LiuXiang on 18/04/09.
+ */
 import axios from "axios/index";
 
 export default {
@@ -30,10 +33,8 @@ export default {
       }).then(data=>{
         var data = data.data;
         if(Number(data.resultcode)==200){
-          console.log(this.AddAdType+'如果添加成功action')
           relove(data.resultcontent)
         }else{
-          console.log(this.AddAdType+'如果添加失败action')
           reject(data.resultcontent)
         }
       })
@@ -56,8 +57,8 @@ export default {
       })
     })
   },
-  //删除门票景点主题
-  DeleteAdType(store,data){
+  //删除广告类型
+  deleteAdType(store,data){
     return new Promise((relove, reject) => {
       axios.post('http://webservice.1000da.com.cn/AdviertiseType/Delete',JSON.stringify(data),{
         headers: {
@@ -86,6 +87,57 @@ export default {
         if(Number(data.resultcode)==200){
           commit('initAdChargeWayList',data.data)
           relove(Number(data.totalrows))
+        }else{
+          reject(data.resultcontent)
+        }
+      })
+    })
+  },
+  //添加广告收费方式
+  addAdChargeWay(store,data){
+    return new Promise((relove, reject) => {
+      axios.post('http://webservice.1000da.com.cn/InComeWay/Insert',JSON.stringify(data),{
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded'
+        }
+      }).then(data=>{
+        var data = data.data;
+        if(Number(data.resultcode)==200){
+          relove(data.resultcontent)
+        }else{
+          reject(data.resultcontent)
+        }
+      })
+    })
+  },
+  //修改收费方式
+  UpdateAdChargeWay(store,data){
+    return new Promise((relove, reject) => {
+      axios.post('http://webservice.1000da.com.cn/InComeWay/Update',JSON.stringify(data),{
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded'
+        }
+      }).then(data=>{
+        var data = data.data;
+        if(Number(data.resultcode)==200){
+          relove(data.resultcontent)
+        }else{
+          reject(data.resultcontent)
+        }
+      })
+    })
+  },
+  //删除广告收费方式
+  deleteAdChargeWay(store,data){
+    return new Promise((relove, reject) => {
+      axios.post('http://webservice.1000da.com.cn/InComeWay/Delete',JSON.stringify(data),{
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded'
+        }
+      }).then(data=>{
+        var data = data.data;
+        if(Number(data.resultcode)==200){
+          relove(data.resultcontent)
         }else{
           reject(data.resultcontent)
         }
@@ -122,10 +174,8 @@ export default {
       }).then(data=>{
         var data = data.data;
         if(Number(data.resultcode)==200){
-          console.log(this.AddAdPosition+'如果添加成功action')
           relove(data.resultcontent)
         }else{
-          console.log(this.AddAdPosition+'如果添加失败action')
           reject(data.resultcontent)
         }
       })
@@ -178,10 +228,8 @@ export default {
           var data = data.data;
           if (Number(data.resultcode) == 200) {
             var resulte = data.data;
-            console.log("resulte:" + resulte)
             for (var i = 0; i < resulte.length; i++) {
               resulte[i].sm_aa_Images = resulte[i].sm_aa_Image.split(',')
-              console.log("resulte[i].sm_aa_Images"  + resulte[i].sm_aa_Images )
             }
             commit('initAdApply',resulte)
             relove(Number(data.totalrows));
@@ -223,7 +271,7 @@ export default {
     })
   },
   //修改广告申请
-  DeleteAdApply(store,data){
+  UpdateAdApplyObj(store,data){
     return new Promise((relove, reject) => {
       axios.post('http://webservice.1000da.com.cn/ApplayAdv/Update',JSON.stringify(data),{
         headers: {

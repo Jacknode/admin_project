@@ -9,7 +9,7 @@
             <span>广告位置名称筛选:</span>
           </el-form-item>
           <el-form-item>
-            <el-input type="text" v-model="adPosition" auto-complete="off"  placeholder="广告位置" size="small"></el-input>
+            <el-input type="text" v-model="adPosition" auto-complete="off"  placeholder="广告位置名称" size="small"></el-input>
           </el-form-item>
           <el-form-item>
             <el-button type="primary" @click="search" size="small">查询</el-button>
@@ -23,11 +23,11 @@
         highlight-current-row
         v-loading="isLoading"
         style="width: 100%">
-        <el-table-column
-          align="center"
-          label="位置信息编码"
-          prop="sm_pi_ID">
-        </el-table-column>
+        <!--<el-table-column-->
+          <!--align="center"-->
+          <!--label="位置信息编码"-->
+          <!--prop="sm_pi_ID">-->
+        <!--</el-table-column>-->
         <el-table-column
           align="center"
           label="位置编码"
@@ -66,10 +66,10 @@
       <!--添加-->
       <el-dialog title="添加广告位置" :visible.sync="addDialog">
         <el-form :model="addOptions">
-          <el-form-item label="广告类型编号:" :label-width="formLabelWidth">
-            <el-input v-model="addOptions.data.sm_pi_ID" placeholder="请输入位置信息编码" ></el-input>
-          </el-form-item>
-          <el-form-item label="位置信息编码:" :label-width="formLabelWidth">
+          <!--<el-form-item label="位置信息编码:" :label-width="formLabelWidth">-->
+            <!--<el-input v-model="addOptions.data.sm_pi_ID" placeholder="请输入位置信息编码" ></el-input>-->
+          <!--</el-form-item>-->
+          <el-form-item label="位置编码:" :label-width="formLabelWidth">
             <el-input v-model="addOptions.data.sm_pi_LocationNo" placeholder="请输入位置编码" ></el-input>
           </el-form-item>
           <el-form-item label="最大广告数:" :label-width="formLabelWidth">
@@ -91,13 +91,16 @@
       <!--修改-->
       <el-dialog title="修改广告位置" :visible.sync="updateDialog">
         <el-form :model="updateAdPositionObj">
-          <el-form-item label="位置信息编码:" :label-width="formLabelWidth">
-            <el-input v-model="updateAdPositionObj.sm_pi_ID" placeholder="请输入广告位置信息编码"  :disabled="isOff"></el-input>
-          </el-form-item>
+          <!--<el-form-item label="位置信息编码:" :label-width="formLabelWidth">-->
+            <!--<el-input v-model="updateAdPositionObj.sm_pi_ID" placeholder="请输入广告位置信息编码"  :disabled="isOff"></el-input>-->
+          <!--</el-form-item>-->
           <el-form-item label="位置编码:" :label-width="formLabelWidth">
             <el-input v-model="updateAdPositionObj.sm_pi_LocationNo" placeholder="位置编码" ></el-input>
           </el-form-item>
           <el-form-item label="最大广告数:" :label-width="formLabelWidth">
+            <el-input v-model="updateAdPositionObj.sm_pi_MaxNo" placeholder="最大广告数" ></el-input>
+          </el-form-item>
+          <el-form-item label="位置名称:" :label-width="formLabelWidth">
             <el-input v-model="updateAdPositionObj.sm_pi_Name" placeholder="最大广告数" ></el-input>
           </el-form-item>
           <el-form-item label="备注:" :label-width="formLabelWidth">
@@ -132,8 +135,8 @@
           "operateUserName": "",
           "pcName": "",
           "data": {
-            "sm_pi_ID": "",//位置信息编码
-            "sm_pi_LocationNo": "",//位置编码
+            "sm_pi_ID": "1",//位置信息编码
+            "sm_pi_LocationNo": "1",//位置编码
             "sm_pi_MaxNo": "",//最大广告数
             "sm_pi_Name": "",//位置名称
             "sm_pi_Remark": "",//备注
@@ -187,8 +190,7 @@
       //添加提交
       addAdPositionSubmit(){
         this.$store.dispatch('AddAdPosition',this.addOptions)
-          .then((suc)=>{
-            this.$notify({
+          .then((suc)=>{this.$notify({
               message: suc,
               type: 'success'
             });
