@@ -318,6 +318,7 @@
       },
       //修改提交
       updateSubmit(){
+        // console.log("this.ImageURL:"+this.ImageURL)
         let updateOptions = {
           "loginUserID": "huileyou",
           "loginUserPass": "123",
@@ -326,7 +327,7 @@
           "pcName": "",
           "data": this.updateHotelRecommendTypeObj
         }
-        updateOptions.data.ht_it_ImagePath = this.ImageURL1.join(',')
+        updateOptions.data.sm_aa_Image = this.ImageURL1.join(',')
         this.$store.dispatch('UpdateHotelRecommendType',updateOptions)
           .then((suc)=>{
             this.$notify({

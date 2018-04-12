@@ -8,7 +8,7 @@
             <span>广告类型收费方式筛选:</span>
           </el-form-item>
           <el-form-item>
-            <el-input type="text" v-model="adTypeChargeMode" auto-complete="off" placeholder="广告类型收费方式" size="small"></el-input>
+            <el-input type="text" v-model="adTypeChargeMode" auto-complete="off" placeholder="广告类型收费方式标识" size="small"></el-input>
           </el-form-item>
           <el-form-item>
             <el-button type="primary" @click="search" size="small">查询</el-button>
@@ -23,11 +23,11 @@
         highlight-current-row
         v-loading="isLoading"
         style="width: 100%">
-        <el-table-column
-          align="center"
-          label="广告类型收费方式标识"
-          prop="sm_aicw_ID">
-        </el-table-column>
+        <!--<el-table-column-->
+          <!--align="center"-->
+          <!--label="广告类型收费方式标识"-->
+          <!--prop="sm_aicw_ID">-->
+        <!--</el-table-column>-->
         <el-table-column
           align="center"
           label="收费方式编码"
@@ -74,9 +74,9 @@
       <!--添加广告类型收费方式-->
       <el-dialog title="添加广告类型收费方式" :visible.sync="addDialog">
         <el-form :model="addOptions">
-          <el-form-item label="标识:" :label-width="formLabelWidth">
-            <el-input v-model="addOptions.data.sm_aicw_ID" placeholder="请输入广告类型收费方式标识" ></el-input>
-          </el-form-item>
+          <!--<el-form-item label="标识:" :label-width="formLabelWidth">-->
+            <!--<el-input v-model="addOptions.data.sm_aicw_ID" placeholder="请输入广告类型收费方式标识" ></el-input>-->
+          <!--</el-form-item>-->
           <el-form-item label="收费方式编码:" :label-width="formLabelWidth">
             <el-input v-model="addOptions.data.sm_icw_ID" placeholder="请输入收费方式编码"></el-input>
           </el-form-item>
@@ -96,9 +96,9 @@
       <!--修改广告类型收费方式-->
       <el-dialog title="修改广告类型收费方式" :visible.sync="updateDialog">
         <el-form :model="updateAdTypeChargeModeObj">
-          <el-form-item label="主题编码:" :label-width="formLabelWidth">
-            <el-input v-model="updateAdTypeChargeModeObj.sm_aicw_ID" placeholder="请输入广告类型收费方式标识"  :disabled="isOff"></el-input>
-          </el-form-item>
+          <!--<el-form-item label="广告类型收费方式标识:" :label-width="formLabelWidth">-->
+            <!--<el-input v-model="updateAdTypeChargeModeObj.sm_aicw_ID" placeholder="请输入广告类型收费方式标识"  :disabled="isOff"></el-input>-->
+          <!--</el-form-item>-->
           <el-form-item label="主题名称:" :label-width="formLabelWidth">
             <el-input v-model="updateAdTypeChargeModeObj.sm_icw_ID" placeholder="收费方式编码" ></el-input>
           </el-form-item>
@@ -139,7 +139,7 @@
           "data": {
             "page": "1",
             "rows": "4",
-            "sm_aicw_ID": "",//广告类型收费方式标识
+            "sm_aicw_ID": "1",//广告类型收费方式标识
             "sm_icw_ID": "",//收费方式编码
             "sm_at_ID": "",//广告类型编码
             "sm_aicw_Remark": "",//备注
@@ -170,9 +170,9 @@
           "operateUserID": "",
           "operateUserName": "",
           "pcName": "",
-          "sm_aicw_ID": "",//广告类型收费方式标识
+          "sm_aicw_ID": name?name:"",//广告类型收费方式标识
           "sm_icw_ID": "",//收费方式编码
-          "sm_at_ID": name?name:'',//广告类型编码
+          "sm_at_ID": '',//广告类型编码
           "sm_aicw_Remark": "",//备注
           "page": page?page:1,
           "rows": 4
@@ -191,6 +191,10 @@
       },
       //添加
       Add(){
+        let obj = this.addOptions.data;
+        obj.sm_icw_ID ='';
+        obj.sm_at_ID ='';
+        obj.sm_aicw_Remark ='';
         this.addDialog = true;
         this.$store.commit('setTranstionFalse');
       },

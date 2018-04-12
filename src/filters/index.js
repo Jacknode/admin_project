@@ -191,10 +191,15 @@ export const getHotName = val=>{
 };
 //广告申请是否通过
 export const getAdApplyPass = val=>{
+  if(val==''){
+    return '未知'
+  }
   switch (Number(val)) {
-    case 0:
-      return '通过';
+    case 3:
+      return '审核中';
     case 1:
+      return '通过';
+    case 2:
       return '不通过';
     default:
       return '未知';

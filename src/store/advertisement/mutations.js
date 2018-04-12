@@ -1,13 +1,14 @@
 /**
- * Created by liuxiang on 18/3/30.
+ * Created by LiuXiang on 18/04/09.
  */
 export default  {
   /********************************************广告类型*********************************************************/
   initAdTypeList(state,data){
     state.adTypeList = data;
   },
-  initUpdateAdType(state,id){
-    state.updateAdTypeObj = state.AdTypeList.filter(item=>{
+  initUpdateAdTypeObj(state,id){
+    console.log(state.updateAdTypeObj)
+    state.updateAdTypeObj = state.adTypeList.filter(item=>{
       if(item.sm_at_ID==id){
         return true
       }
@@ -17,6 +18,14 @@ export default  {
   /********************************************广告收费方式*********************************************************/
   initAdChargeWayList(state,data){
     state.adChargeWayList = data;
+  },
+  initUpdateAdChargeWayObj(state,id){
+    state.updateAdChargeWayObj = state.adChargeWayList.filter(item=>{
+      if(item.sm_icw_ID==id){
+        return true
+      }
+      return false
+    })[0]
   },
   /********************************************广告位置*********************************************************/
   initAdPosition(state,data){

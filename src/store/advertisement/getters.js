@@ -8,6 +8,7 @@ export default {
   adTypeListList: state => state.adTypeListList,
   /********************************************广告收费方式*********************************************************/
   adChargeWayList: state => state.adChargeWayList,
+  updateAdChargeWayObj: state => state.updateAdChargeWayObj,
   /********************************************广告位置*********************************************************/
   adPositionList: state => state.adPositionList,
   updateAdPositionObj: state => state.updateAdPositionObj,
