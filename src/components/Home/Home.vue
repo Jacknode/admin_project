@@ -142,13 +142,13 @@
                         <router-link to="/home/adChargeWay">广告收费方式</router-link>
                       </li>
                       <li>
+                        <router-link to="/home/adTypeChargeMode">广告类型收费方式</router-link>
+                      </li>
+                      <li>
                         <router-link to="/home/adPosition">广告位置</router-link>
                       </li>
                       <li>
                         <router-link to="/home/adApply">广告申请</router-link>
-                      </li>
-                      <li>
-                        <router-link to="/home/adTypeChargeMode">广告类型收费方式</router-link>
                       </li>
                     </ul>
                   </li>

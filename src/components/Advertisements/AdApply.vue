@@ -22,18 +22,18 @@
         <el-table-column type="expand">
           <template slot-scope="props">
             <el-form label-position="left" inline class="demo-table-expand">
-              <!--<el-form-item label="申请广告编码">-->
-                <!--<span>{{ props.row.sm_aa_ID }}</span>-->
-              <!--</el-form-item>-->
-              <!--<el-form-item label="位置信息编码">-->
-                <!--<span>{{ props.row.sm_aa_LocationID }}</span>-->
-              <!--</el-form-item>-->
-              <!--<el-form-item label="广告类型编码 ID">-->
-                <!--<span>{{ props.row.sm_aa_AdviertiseTypeID }}</span>-->
-              <!--</el-form-item>-->
-              <!--<el-form-item label="供应商编码 ID">-->
-                <!--<span>{{ props.row.sm_aa_AgentID }}</span>-->
-              <!--</el-form-item>-->
+              <el-form-item label="申请广告编码">
+                <span>{{ props.row.sm_aa_ID }}</span>
+              </el-form-item>
+              <el-form-item label="位置信息编码">
+                <span>{{ props.row.sm_aa_LocationID }}</span>
+              </el-form-item>
+              <el-form-item label="广告类型编码 ID">
+                <span>{{ props.row.sm_aa_AdviertiseTypeID }}</span>
+              </el-form-item>
+              <el-form-item label="供应商编码 ID">
+                <span>{{ props.row.sm_aa_AgentID }}</span>
+              </el-form-item>
               <el-form-item label="广告图片">
                 <img :src="item" v-for="item in props.row.sm_aa_Images" width="80" height="50" alt="">
               </el-form-item>
@@ -94,10 +94,10 @@
       <!--添加-->
       <el-dialog title="添加广告申请" :visible.sync="addDialog">
         <el-form :model="addOptions">
-          <el-form-item label="申请广告编码:" :label-width="formLabelWidth">
-            <el-input v-model="addOptions.data.sm_aa_ID" placeholder="请输入申请广告编码" ></el-input>
-          </el-form-item>
-          <el-form-item label="广告类型编码:" :label-width="formLabelWidth">
+          <!--<el-form-item label="申请广告编码:" :label-width="formLabelWidth">-->
+            <!--<el-input v-model="addOptions.data.sm_aa_ID" placeholder="请输入申请广告编码" ></el-input>-->
+          <!--</el-form-item>-->
+          <el-form-item label="广告类型:" :label-width="formLabelWidth">
             <el-input v-model="addOptions.data.sm_aa_AdviertiseTypeID" placeholder="请输入广告类型编码" ></el-input>
           </el-form-item>
           <el-form-item label="位置信息编码:" :label-width="formLabelWidth">
@@ -125,9 +125,9 @@
               placeholder="创建时间">
             </el-date-picker>
           </el-form-item>
-          <el-form-item label="是否通过:" :label-width="formLabelWidth">
+          <el-form-item label="审核状态:" :label-width="formLabelWidth">
             <el-select v-model="addOptions.data.sm_aa_PassState"
-              placeholder="是否通过"
+              placeholder="审核状态"
               @change="OnChange"
             >
               <el-option
@@ -164,9 +164,9 @@
       <!--修改-->
       <el-dialog title="修改广告申请" :visible.sync="updateDialog">
         <el-form :model="updateAdApplyObj">
-          <!--<el-form-item label="申请广告编码:" :label-width="formLabelWidth">-->
-            <!--<el-input v-model="updateAdApplyObj.sm_aa_ID" placeholder="请输入申请广告编码"  ></el-input>-->
-          <!--</el-form-item>-->
+          <el-form-item label="申请广告编码:" :label-width="formLabelWidth">
+            <el-input v-model="updateAdApplyObj.sm_aa_ID" :disabled="isOff" placeholder="请输入申请广告编码"  ></el-input>
+          </el-form-item>
           <!--<el-form-item label="广告类型编码:" :label-width="formLabelWidth">-->
             <!--<el-input v-model="updateAdApplyObj.sm_aa_AdviertiseTypeID" placeholder="请输入广告类型编码" ></el-input>-->
           <!--</el-form-item>-->
@@ -223,6 +223,7 @@
     name: '',
     data(){
       return {
+        isOff:false,
         value:0,
         isShow:true,
         isShow1:true,

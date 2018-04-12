@@ -25,6 +25,11 @@
         style="width: 100%">
         <el-table-column
           align="center"
+          label="收费方式编码"
+          prop="sm_icw_ID">
+        </el-table-column>
+        <el-table-column
+          align="center"
           label="收费方式名称"
           prop="sm_icw_Name">
         </el-table-column>

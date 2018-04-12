@@ -25,6 +25,12 @@
         <el-table-column
           align="center"
           sortable
+          label="广告类型编号"
+          prop="sm_at_ID">
+        </el-table-column>
+        <el-table-column
+          align="center"
+          sortable
           label="广告类型名称"
           prop="sm_at_Name">
         </el-table-column>
@@ -75,6 +81,9 @@
       <!--添加-->
       <el-dialog title="添加广告类型" :visible.sync="addDialog">
         <el-form :model="addOptions">
+          <el-form-item label="广告类型编号:" :label-width="formLabelWidth">
+            <el-input v-model="addOptions.data.sm_at_ID" placeholder="广告类型编号" :disabled="isOff"></el-input>
+          </el-form-item>
           <el-form-item label="广告类型名称" :label-width="formLabelWidth">
             <el-select v-model="addOptions.data.sm_at_Name" placeholder="请选择广告类型名称">
               <el-option label="微电影" value="微电影"></el-option>
@@ -104,9 +113,9 @@
       <!--修改-->
       <el-dialog title="修改广告类型" :visible.sync="updateDialog">
         <el-form :model="updateAdTypeObj">
-          <!--<el-form-item label="广告类型编码:" :label-width="formLabelWidth">-->
-            <!--<el-input v-model="updateAdTypeObj.sm_at_ID" placeholder="请输入广告类型编码"  :disabled="isOff"></el-input>-->
-          <!--</el-form-item>-->
+          <el-form-item label="广告类型编码:" :label-width="formLabelWidth">
+            <el-input v-model="updateAdTypeObj.sm_at_ID" placeholder="请输入广告类型编码"  :disabled="isOff"></el-input>
+          </el-form-item>
           <el-form-item label="广告类型名称" :label-width="formLabelWidth">
             <el-select v-model="updateAdTypeObj.sm_at_Name" placeholder="请选择广告类型名称">
               <el-option label="微电影" value="微电影"></el-option>
