@@ -23,11 +23,11 @@
         highlight-current-row
         v-loading="isLoading"
         style="width: 100%">
-        <!--<el-table-column-->
-          <!--align="center"-->
-          <!--label="位置信息编码"-->
-          <!--prop="sm_pi_ID">-->
-        <!--</el-table-column>-->
+        <el-table-column
+          align="center"
+          label="位置信息编码"
+          prop="sm_pi_ID">
+        </el-table-column>
         <el-table-column
           align="center"
           label="位置编码"
@@ -66,9 +66,9 @@
       <!--添加-->
       <el-dialog title="添加广告位置" :visible.sync="addDialog">
         <el-form :model="addOptions">
-          <!--<el-form-item label="位置信息编码:" :label-width="formLabelWidth">-->
-            <!--<el-input v-model="addOptions.data.sm_pi_ID" placeholder="请输入位置信息编码" ></el-input>-->
-          <!--</el-form-item>-->
+          <el-form-item label="位置信息编码:" :label-width="formLabelWidth">
+            <el-input v-model="addOptions.data.sm_pi_ID" placeholder="请输入位置信息编码" ></el-input>
+          </el-form-item>
           <el-form-item label="位置编码:" :label-width="formLabelWidth">
             <el-input v-model="addOptions.data.sm_pi_LocationNo" placeholder="请输入位置编码" ></el-input>
           </el-form-item>
@@ -91,9 +91,9 @@
       <!--修改-->
       <el-dialog title="修改广告位置" :visible.sync="updateDialog">
         <el-form :model="updateAdPositionObj">
-          <!--<el-form-item label="位置信息编码:" :label-width="formLabelWidth">-->
-            <!--<el-input v-model="updateAdPositionObj.sm_pi_ID" placeholder="请输入广告位置信息编码"  :disabled="isOff"></el-input>-->
-          <!--</el-form-item>-->
+          <el-form-item label="位置信息编码:" :label-width="formLabelWidth">
+            <el-input v-model="updateAdPositionObj.sm_pi_ID" placeholder="请输入广告位置信息编码"  :disabled="isOff"></el-input>
+          </el-form-item>
           <el-form-item label="位置编码:" :label-width="formLabelWidth">
             <el-input v-model="updateAdPositionObj.sm_pi_LocationNo" placeholder="位置编码" ></el-input>
           </el-form-item>

@@ -7,7 +7,6 @@ export default  {
     state.adTypeList = data;
   },
   initUpdateAdTypeObj(state,id){
-    console.log(state.updateAdTypeObj)
     state.updateAdTypeObj = state.adTypeList.filter(item=>{
       if(item.sm_at_ID==id){
         return true
