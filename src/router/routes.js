@@ -29,6 +29,10 @@ import AdminIntegralWeight from '@/components/admin/AdminIntegralWeight'
 import AdminIntegralType from '@/components/admin/AdminIntegralType'
 /*-------------------------------------门票管理----------------------------------------------*/
 import TicketTheme from '@/components/ticket/ticketTheme' //门票主题hotelImageType
+import TicketToExamine from '@/components/ticket/TicketToExamine' //景点审核
+import TicketToExamineShowHomePage from '@/components/ticket/TicketToExamineShowHomePage'//审核景点是否展示在首页
+import TicketHomePageBigPicture from '@/components/ticket/TicketHomePageBigPicture'//首页展示大图
+import TicketHomePageSmallPicture from '@/components/ticket/TicketHomePageSmallPicture'//首页展示小图
 
 /*-------------------------------------酒店管理----------------------------------------------*/
 import HotelImageType from '@/components/hotel/HotelImageType' //酒店图片类型主题
@@ -117,6 +121,38 @@ export default [
           User: TicketTheme
         },
         name: 'TicketTheme'
+      },
+      {
+        path: 'ticketToExamine',
+        components: {
+          default: Home,
+          User: TicketToExamine
+        },
+        name: 'TicketToExamine'
+      },
+      {
+        path: 'ticketToExamineShowHomePage',
+        components: {
+          default: Home,
+          User: TicketToExamineShowHomePage
+        },
+        name: 'TicketToExamineShowHomePage'
+      },
+      {
+        path: 'ticketHomePageBigPicture',
+        components: {
+          default: Home,
+          User: TicketHomePageBigPicture
+        },
+        name: 'TicketHomePageBigPicture',
+      },
+      {
+        path: 'ticketHomePageSmallPicture',
+        components: {
+          default: Home,
+          User: TicketHomePageSmallPicture
+        },
+        name: 'TicketHomePageSmallPicture',
       },
 
       /*-------------------------------------酒店管理----------------------------------------------*/
@@ -296,6 +332,6 @@ export default [
   {
     path: '*',
     hidden: true,
-    redirect: { name: 'Login' }
+    redirect: {name: 'Login'}
   },
 ]

@@ -156,7 +156,19 @@
                     <a href="javascript:;"><i class="icon-ticket"></i> <span>门票管理</span></a>
                     <ul>
                       <li>
-                        <router-link to="/home/ticketTheme">主题管理</router-link>
+                        <router-link to="/home/ticketTheme">门票主题管理</router-link>
+                      </li>
+                      <li>
+                        <router-link to="/home/ticketToExamine">门票审核景点</router-link>
+                      </li>
+                      <li>
+                        <router-link to="/home/ticketToExamineShowHomePage">门票审核景点展示首页</router-link>
+                      </li>
+                      <li>
+                        <router-link to="/home/ticketHomePageBigPicture">门票首页显示大图</router-link>
+                      </li>
+                      <li>
+                        <router-link to="/home/ticketHomePageSmallPicture">门票首页显示小图</router-link>
                       </li>
                     </ul>
                   </li>
