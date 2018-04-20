@@ -4,4 +4,8 @@
 export default {
   ticketThemeList: state => state.ticketThemeList,
   updateTicketThemeObj: state => state.updateTicketThemeObj,
+  scenicSpotList: state => state.scenicSpotList,
+  showTopList: state => state.showTopList,
+  ticketHomePageBigPictureList: state => state.ticketHomePageBigPictureList,
+  ticketHomePageSmallPictureList: state => state.ticketHomePageSmallPictureList,
 }
