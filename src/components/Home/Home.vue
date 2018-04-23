@@ -200,6 +200,17 @@
                   </li>
                   <li>
                     <a href="javascript:;"><i class="icon-coin-yen"></i> <span>美食管理</span></a>
+                    <ul>
+                      <li>
+                        <router-link to="/home/FoodRecommendStoreType">美食推荐店铺管理</router-link>
+                      </li>
+                      <li>
+                        <router-link to="/home/FoodAttributeListType">美食属性表管理</router-link>
+                      </li>
+                      <li>
+                        <router-link to="/home/FoodReviewStoreInformation">美食属审核店面信息管理</router-link>
+                      </li>
+                    </ul>
                   </li>
                 </ul>
               </div>

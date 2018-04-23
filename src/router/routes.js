@@ -53,6 +53,12 @@ import AdPosition from '@/components/Advertisements/AdPosition'
 import AdApply from '@/components/Advertisements/AdApply'
 //广告类型收费方式
 import AdTypeChargeMode from '@/components/Advertisements/AdTypeChargeMode'
+
+/*-------------------------------------美食管理----------------------------------------------*/
+import FoodRecommendStoreType from '@/components/food/FoodRecommendStoreType' //美食推荐店铺管理
+import FoodAttributeListType from '@/components/food/FoodAttributeListType' //美食属性表管理
+import FoodReviewStoreInformation from '@/components/food/FoodReviewStoreInformation'  //美食审核店面信息
+
 export default [
   {
     path: '/',
@@ -327,6 +333,32 @@ export default [
         },
         name: 'AdminProductMenu'
       },
+      /*-------------------------------------美食管理----------------------------------------------*/
+      //美食推荐店铺
+      {
+        path: 'FoodRecommendStoreType',
+        components: {
+          default: Home,
+          User: FoodRecommendStoreType
+        },
+        name: 'FoodRecommendStoreType'
+      },
+      {
+        path: 'FoodAttributeListType',
+        components: {
+          default: Home,
+          User: FoodAttributeListType
+        },
+        name: 'FoodAttributeListType'
+      },
+      {
+        path: 'FoodReviewStoreInformation',
+        components: {
+          default: Home,
+          User: FoodReviewStoreInformation
+        },
+        name: 'FoodReviewStoreInformation'
+      }
     ]
   },
   {
