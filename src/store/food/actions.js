@@ -16,7 +16,7 @@ export default {
         var data=data.data;
         if(Number(data.resultcode==200)){
           commit('initIntroduceShopInfo',data.data);
-          relove(data.resultcontent);
+          relove(Number(data.totalrows));
         }else{
 
           reject(data.resultcontent)
@@ -93,7 +93,6 @@ export default {
       }).then(data=>{
         var data=data.data;
         if(Number(data.resultcode==200)){
-          // commit(' AddFoodAttributeListType',data.data);
           relove(data.resultcontent);
         }else{
           reject(data.resultcontent)
@@ -102,7 +101,7 @@ export default {
     })
   },
 //删除美食属性
-  DeleteFoodAttributeType(store,data){
+  deleteFoodAttributeType(store,data){
     return new Promise((relove,reject)=>{
       axios.post('http://webservice.1000da.com.cn/Property/Delete',JSON.stringify(data),{
         headers:{
@@ -111,7 +110,6 @@ export default {
       }).then(data=>{
         var data=data.data;
         if(Number(data.resultcode==200)){
-          // commit('DeleteFoodAttributeType',data.data);
           relove(data.resultcontent);
         }else{
           reject(data.resultcontent)
@@ -171,6 +169,127 @@ export default {
         if(Number(data.resultcode==200)){
           commit('initFoodReviewStoreInformation',data.data);
           relove(Number(data.totalrows));
+        }else{
+          reject(data.resultcontent)
+        }
+      })
+    })
+  },
+  //审核推荐店面
+  applyStoreSubmit({commit},data){
+    return new Promise((relove,reject)=>{
+      axios.post('http://webservice.1000da.com.cn/IntroduceShop/PassIntroShop',JSON.stringify(data),{
+        headers:{
+          'Content-Type': 'application/x-www-form-urlencoded'
+        }
+      }).then(data=>{
+        var data=data.data;
+        if(Number(data.resultcode==200)){
+          relove(data.resultcontent);
+        }else{
+          reject(data.resultcontent)
+        }
+      })
+    })
+  },
+  //首页展示图片
+  initFoodHomePagePicture({commit},data){
+    return new Promise((relove,reject)=>{
+      axios.post('http://webservice.1000da.com.cn/ShowTop/Select',JSON.stringify(data),{
+        headers:{
+          'Content-Type': 'application/x-www-form-urlencoded'
+        }
+      }).then(data=>{
+        var data=data.data;
+        if(Number(data.resultcode==200)){
+          commit('initFoodHomePagePicture',data.data);
+          relove(Number(data.totalrows));
+        }else{
+          reject(data.resultcontent)
+        }
+      })
+    })
+  },
+  //店面产品
+  initStoreProductData({commit},data){
+    return new Promise((relove,reject)=>{
+      axios.post('http://webservice.1000da.com.cn/StoreFrontProduct/Select',JSON.stringify(data),{
+        headers:{
+          'Content-Type': 'application/x-www-form-urlencoded'
+        }
+      }).then(data=>{
+        var data=data.data;
+        if(Number(data.resultcode==200)){
+          commit('initStoreProductData',data.data);
+          relove();
+        }else{
+          reject(data.resultcontent)
+        }
+      })
+    })
+  },
+  //添加首页展示图片
+  addFoodHomePagePicture({commit},data){
+    return new Promise((relove,reject)=>{
+      axios.post('http://webservice.1000da.com.cn/ShowTop/Insert',JSON.stringify(data),{
+        headers:{
+          'Content-Type': 'application/x-www-form-urlencoded'
+        }
+      }).then(data=>{
+        var data=data.data;
+        if(Number(data.resultcode==200)){
+          relove(data.resultcontent);
+        }else{
+          reject(data.resultcontent)
+        }
+      })
+    })
+  },
+  //修改首页展示图片
+  updateFoodHomePagePicture({commit},data){
+    return new Promise((relove,reject)=>{
+      axios.post('http://webservice.1000da.com.cn/ShowTop/Update',JSON.stringify(data),{
+        headers:{
+          'Content-Type': 'application/x-www-form-urlencoded'
+        }
+      }).then(data=>{
+        var data=data.data;
+        if(Number(data.resultcode==200)){
+          relove(data.resultcontent);
+        }else{
+          reject(data.resultcontent)
+        }
+      })
+    })
+  },
+  //删除首页展示图片
+  deleteFoodHomePagePicture({commit},data){
+    return new Promise((relove,reject)=>{
+      axios.post('http://webservice.1000da.com.cn/ShowTop/Delete',JSON.stringify(data),{
+        headers:{
+          'Content-Type': 'application/x-www-form-urlencoded'
+        }
+      }).then(data=>{
+        var data=data.data;
+        if(Number(data.resultcode==200)){
+          relove(data.resultcontent);
+        }else{
+          reject(data.resultcontent)
+        }
+      })
+    })
+  },
+  //审核店面
+  applyFoodReviewStoreInformation({commit},data){
+    return new Promise((relove,reject)=>{
+      axios.post('http://webservice.1000da.com.cn/StoreFront/Validate',JSON.stringify(data),{
+        headers:{
+          'Content-Type': 'application/x-www-form-urlencoded'
+        }
+      }).then(data=>{
+        var data=data.data;
+        if(Number(data.resultcode==200)){
+          relove(data.resultcontent);
         }else{
           reject(data.resultcontent)
         }

@@ -9,16 +9,16 @@
             <span>美食属性类型筛选:</span>
           </el-form-item>
 
-            <el-form-item label="" :label-width="formLabelWidth"  >
-              <el-select  v-model="imageName" placeholder="请选择">
-                <el-option
-                  v-for="item in options"
-                  :key="item.value"
-                  :label="item.name"
-                  :value="item.value">
-                </el-option>
-              </el-select>
-            </el-form-item>
+          <el-form-item label="" :label-width="formLabelWidth">
+            <el-select v-model="imageName" placeholder="请选择">
+              <el-option
+                v-for="item in options"
+                :key="item.value"
+                :label="item.name"
+                :value="item.value">
+              </el-option>
+            </el-select>
+          </el-form-item>
 
           <el-form-item>
             <el-button type="primary" @click="search" size="small">查询</el-button>
@@ -61,12 +61,12 @@
               type="primary"
               @click="Update(scope.row)">修改
             </el-button>
-            <!--<el-button-->
-              <!--v-show="true"-->
-              <!--size="mini"-->
-              <!--type="danger"-->
-              <!--@click="Delete(scope.row.propertyID)">删除-->
-            <!--</el-button>-->
+            <el-button
+              v-show="true"
+              size="mini"
+              type="danger"
+              @click="Delete(scope.row.propertyID)">删除
+            </el-button>
           </template>
         </el-table-column>
       </el-table>
@@ -112,7 +112,8 @@
       <el-dialog title="修改美食属性名称" :visible.sync="updateDialog">
         <el-form :model="updateFoodAttributeTypeOptions">
           <el-form-item label="编号:" :label-width="formLabelWidth">
-            <el-input v-model="updateFoodAttributeTypeOptions.data.fd_py_ID" :disabled="isOff" placeholder="请输入编号"></el-input>
+            <el-input v-model="updateFoodAttributeTypeOptions.data.fd_py_ID" :disabled="isOff"
+                      placeholder="请输入编号"></el-input>
           </el-form-item>
           <el-form-item label="属性名称:" :label-width="formLabelWidth">
             <el-input v-model="updateFoodAttributeTypeOptions.data.fd_py_Name" placeholder="请输入属性名称"></el-input>
@@ -138,10 +139,11 @@
 </template>
 <script>
   import {mapGetters} from 'vuex'
-  export default{
-    data(){
+
+  export default {
+    data() {
       return {
-        updateFoodAttributeTypeOptions:{
+        updateFoodAttributeTypeOptions: {
           "loginUserID": "huileyou",
           "loginUserPass": "123",
           "operateUserID": "",
@@ -153,25 +155,25 @@
             "fd_py_ParentID": "",//父编码
           }
         },
-        options:[
+        options: [
           {
-            name:'美食类型',
-            value:'1'
+            name: '美食类型',
+            value: '1'
           },
           {
-            name:'用餐人数',
-            value:'28'
+            name: '用餐人数',
+            value: '28'
           },
         ],
         //初始化
-        imageName:'',
-        isOff:'',
-        total:0,
-        isLoading:false,
-        updateDialog:false,
-        formLabelWidth:'120px',
-        addDialog:false,
-        addOptions:{
+        imageName: '',
+        isOff: '',
+        total: 0,
+        isLoading: false,
+        updateDialog: false,
+        formLabelWidth: '120px',
+        addDialog: false,
+        addOptions: {
           "loginUserID": "huileyou",
           "loginUserPass": "123",
           "operateUserID": "",
@@ -181,44 +183,41 @@
             "fd_py_Name": "",//名称
             "fd_py_ParentID": "",//父编码
           },
-          fd_py_ParentID:'',
+          fd_py_ParentID: '',
         },
       }
     },
     computed: mapGetters([
       'foodAttributeTypeList',
     ]),
-    created(){
-      this.initData('',1)
+    created() {
+      this.initData('', 1)
     },
     methods: {
       //分页
 
-      handleCurrentChange(num){
-        this.initData(this.imageName,num)
+      handleCurrentChange(num) {
+        this.initData(this.imageName, num)
       },
 
-      initData(name,page){
+      initData(name, page) {
         let options = {
-            "loginUserID": "huileyou",
-            "loginUserPass": "123",
-            "operateUserID": "",
-            "operateUserName": "",
-            "pcName": "",
-            //"fd_py_ID": "28",//编号
-            //"fd_py_Name": "菜",//名称
-            "fd_py_ParentID": name?name:'',//父编码
-            //"fd_py_LetterName": "C",//英文名称
-            "page": page?page:"1",
-            "rows": "5",
+          "loginUserID": "huileyou",
+          "loginUserPass": "123",
+          "operateUserID": "",
+          "operateUserName": "",
+          "pcName": "",
+          "fd_py_ParentID": name ? name : '',//父编码
+          "page": page ? page : "1",
+          "rows": "5",
 
-          };
+        };
         this.isLoading = true;
-        this.$store.dispatch('initFoodAttributeListType',options)
-          .then(total=>{
+        this.$store.dispatch('initFoodAttributeListType', options)
+          .then(total => {
             this.total = total;
             this.isLoading = false;
-          },err=>{
+          }, err => {
             this.$notify({
               message: err,
               type: 'error'
@@ -226,27 +225,27 @@
           })
       },
       //查询
-      search(){
-        this.initData(this.imageName,1)
-   },
+      search() {
+        this.initData(this.imageName, 1)
+      },
 
 
       //添加
-      Add(){
+      Add() {
         this.addDialog = true;
         this.$store.commit('setTranstionFalse');
       },
       //添加提交
-      addSubmit(){
+      addSubmit() {
         //actions提交的数据接口
-        this.$store.dispatch('AddFoodAttributeListType',this.addOptions)
-          .then((suc)=>{
+        this.$store.dispatch('AddFoodAttributeListType', this.addOptions)
+          .then((suc) => {
             this.$notify({
               message: suc,
               type: 'success'
             });
-            this.initData(this.imageName,1) //调用初始化
-          },err=>{
+            this.initData(this.imageName, 1) //调用初始化
+          }, err => {
             this.$notify({
               message: err,
               type: 'error'
@@ -255,26 +254,23 @@
         this.addDialog = false;
       },
       //修改
-      Update(rowData){
+      Update(rowData) {
         this.updateDialog = true;
         this.$store.commit('setTranstionFalse');
-        this.updateFoodAttributeTypeOptions.data.fd_py_ParentID="";
-        this.updateFoodAttributeTypeOptions.data.fd_py_ID=rowData.propertyID;
-        this.updateFoodAttributeTypeOptions.data.fd_py_Name=rowData.propertyName;
-        // this.updateFoodAttributeTypeOptions.data.fd_py_ParentID=rowData.propertyID;
-        // this.$store.commit('initUpdateFoodAttributeType',id)   //initUpdataFoodRecommendStoreType是mutations中，用于把店铺的数据状态进行修改
+        this.updateFoodAttributeTypeOptions.data.fd_py_ParentID = "";
+        this.updateFoodAttributeTypeOptions.data.fd_py_ID = rowData.propertyID;
+        this.updateFoodAttributeTypeOptions.data.fd_py_Name = rowData.propertyName;
       },
       //修改提交
-      updateSubmit(){
-        // this.updateFoodAttributeTypeOptions.data.fd_py_ParentID=;
-        this.$store.dispatch('initUpdateFoodAttributeType',this.updateFoodAttributeTypeOptions)
-          .then((suc)=>{
+      updateSubmit() {
+        this.$store.dispatch('initUpdateFoodAttributeType', this.updateFoodAttributeTypeOptions)
+          .then((suc) => {
             this.$notify({
               message: suc,
               type: 'success'
             });
-            this.initData(this.imageName,1)
-          },err=>{
+            this.initData(this.imageName, 1)
+          }, err => {
             this.$notify({
               message: err,
               type: 'error'
@@ -283,32 +279,31 @@
         this.updateDialog = false;
       },
       //删除
-//       Delete(id){
-//         let deleteOptions = {
-//           "loginUserID": "huileyou",
-//           "loginUserPass": "123",
-//           "operateUserID": "操作员编码",
-//           "operateUserName": "操作员名称",
-//           "pcName": "",
-//           "data": {
-//             "fd_py_ID": id
-//           }
-//         };
-// //        DeleteFoodAttributeType
-//         this.$store.dispatch('DeleteFoodAttributeType',deleteOptions)
-//           .then((suc)=>{
-//             this.$notify({
-//               message: suc,
-//               type: 'success'
-//             });
-//             this.initData(this.imageName,1)
-//           },err=>{
-//             this.$notify({
-//               message: err,
-//               type: 'error'
-//             });
-//           });
-//       }
+      Delete(id) {
+        let deleteOptions = {
+          "loginUserID": "huileyou",
+          "loginUserPass": "123",
+          "operateUserID": "",
+          "operateUserName": "",
+          "pcName": "",
+          "data": {
+            "fd_py_ID": id ? id : '',//编号
+          }
+        };
+        this.$store.dispatch('deleteFoodAttributeType',deleteOptions)
+          .then((suc) => {
+            this.$notify({
+              message: suc,
+              type: 'success'
+            });
+            this.initData(this.imageName,1)
+          }, err => {
+            this.$notify({
+              message: err,
+              type: 'error'
+            });
+          });
+      }
     }
   }
 </script>
