@@ -206,6 +206,20 @@
                   </li>
                   <li>
                     <a href="javascript:;"><i class="icon-coin-yen"></i> <span>美食管理</span></a>
+                    <ul>
+                      <li>
+                        <router-link to="/home/foodRecommendStoreType">美食推荐店铺管理</router-link>
+                      </li>
+                      <li>
+                        <router-link to="/home/foodAttributeListType">美食属性表管理</router-link>
+                      </li>
+                      <li>
+                        <router-link to="/home/foodReviewStoreInformation">美食审核店面信息管理</router-link>
+                      </li>
+                      <li>
+                        <router-link to="/home/foodHomePagePicture">美食首页展示图片管理</router-link>
+                      </li>
+                    </ul>
                   </li>
                   <li>
                     <a href="javascript:;"><i class="icon-ticket"></i> <span>上传App</span></a>

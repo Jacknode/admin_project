@@ -58,6 +58,11 @@ import AdTypeChargeMode from '@/components/Advertisements/AdTypeChargeMode'
 
 //上传App
 import UploadApp from '@/components/App/UploadApp'
+/*-------------------------------------美食管理----------------------------------------------*/
+import FoodRecommendStoreType from '@/components/food/FoodRecommendStoreType' //美食推荐店铺管理
+import FoodAttributeListType from '@/components/food/FoodAttributeListType' //美食属性表管理
+import FoodReviewStoreInformation from '@/components/food/FoodReviewStoreInformation'  //美食审核店面信息
+import FoodHomePagePicture from '@/components/food/FoodHomePagePicture'//首页展示图片
 
 export default [
   {
@@ -280,15 +285,6 @@ export default [
         },
         name: 'AdminIntegralType'
       },
-      //广告类型
-      {
-        path: 'adType',
-        components: {
-          default: Home,
-          User: AdType
-        },
-        name: 'AdType'
-      },
       //供应商信息审核
       {
         path: 'adminSupplier',
@@ -359,6 +355,43 @@ export default [
         },
         name: 'AdminProductMenu'
       },
+      /*-------------------------------------美食管理----------------------------------------------*/
+      //美食推荐店铺
+      {
+        path: 'FoodRecommendStoreType',
+        components: {
+          default: Home,
+          User: FoodRecommendStoreType
+        },
+        name: 'FoodRecommendStoreType'
+      },
+      //属性
+      {
+        path: 'FoodAttributeListType',
+        components: {
+          default: Home,
+          User: FoodAttributeListType
+        },
+        name: 'FoodAttributeListType'
+      },
+      //审核店面
+      {
+        path: 'FoodReviewStoreInformation',
+        components: {
+          default: Home,
+          User: FoodReviewStoreInformation
+        },
+        name: 'FoodReviewStoreInformation'
+      },
+      //首页展示图片
+      {
+        path:'foodHomePagePicture',
+        components: {
+          default: Home,
+          User: FoodHomePagePicture
+        },
+        name: 'FoodHomePagePicture'
+      }
     ]
   },
   {
