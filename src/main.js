@@ -6,7 +6,6 @@ import '@/assets/css/reset.css'
 import '@/assets/css/animate.css'
 import '@/assets/css/icons/icomoon/styles.css'
 import 'element-ui/lib/theme-chalk/index.css'
-import '@/assets/js/login';
 import App from './App'
 import router from './router'
 import store from './store/index'
@@ -22,7 +21,7 @@ import * as filters from './filters'
 Object.keys(filters).forEach((key) => {
   Vue.filter(key, filters[key]);
 })
-Vue.config.productionTip = false;
+// Vue.config.productionTip = false;
 import VueLazyLoad from 'vue-lazyload'
 Vue.use(VueLazyLoad,{
   error:'../static/img/error.jpg',

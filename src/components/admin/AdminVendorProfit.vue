@@ -5,14 +5,14 @@
 
       <el-col :span="24" class="formSearch">
         <el-form :inline="true">
+          <!--<el-form-item>-->
+            <!--<span>供应商利润筛选:</span>-->
+          <!--</el-form-item>-->
+          <!--<el-form-item>-->
+            <!--<el-input type="text" v-model="userName" auto-complete="off"size="small"></el-input>-->
+          <!--</el-form-item>-->
           <el-form-item>
-            <span>供应商利润筛选:</span>
-          </el-form-item>
-          <el-form-item>
-            <el-input type="text" v-model="userName" auto-complete="off"size="small"></el-input>
-          </el-form-item>
-          <el-form-item>
-            <el-button type="primary" @click="search" size="small">查询</el-button>
+            <!--<el-button type="primary" @click="search" size="small">查询</el-button>-->
             <!--<el-button type="primary" @click="next">下一步</el-button>-->
             <el-button type="primary" @click="addAdminVendorProfit" size="small">新增</el-button>
           </el-form-item>
