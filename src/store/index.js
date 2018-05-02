@@ -8,6 +8,7 @@ import advertisement from './advertisement'
 import ticket from './ticket' //门票
 import hotel from './hotel' //酒店
 import food from './food' //美食
+import movie from './movie' //美食
 
 Vue.use(Vuex);
 const debug = process.env.NODE_ENV !== 'production'
@@ -19,7 +20,8 @@ export default new Vuex.Store({
     advertisement,
     ticket,
     hotel,
-    food
+    food,
+    movie
   },
   // strict: debug,
 })
