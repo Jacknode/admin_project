@@ -204,7 +204,7 @@
 //        };
 //        this.$store.dispatch('initAdminProductLine', options)
       },
-      loadAll(num) {
+      loadAll(num,name) {
         return new Promise((relove, reject) => {
           var _this = this;
 
@@ -213,9 +213,9 @@
             "loginUserPass": "123",
             "operateUserID": "",
             "operateUserName": "",
-            sm_ai_Name:'',
+            sm_ai_Name:name?name:'',
             "sm_ai_ID": '',
-            "page": 1,
+            "page": num?num:1,
             "rows": 20,
           };
           this.$store.dispatch('initAdminSupplier',options)
@@ -232,6 +232,7 @@
       querySearchAsync(queryString, cb) {
         this.loadAll(1, queryString).then(data => {
           var data = data.data;
+          console.log(data)
           data = data.map(item => {
             return {
               id: item.agentInfo.sm_ai_AgentID,

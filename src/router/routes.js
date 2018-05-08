@@ -2,11 +2,11 @@
  * Created by leibo on 18/2/6.
  */
 //登录
-// import Login from '@/components/admin/Login'
+import Login from '@/components/admin/Login'
 //Home
 import Home from '@/components/Home/Home'//理应注释的
 //商家信息
-// import AdminBusinessInformation from '@/components/admin/AdminBusinessInformation'
+import AdminBusinessInformation from '@/components/admin/AdminBusinessInformation'
 //供应商信息
 import AdminSupplier from '@/components/admin/AdminSupplier'
 //系统菜单
@@ -14,57 +14,65 @@ import AdminSupplier from '@/components/admin/AdminSupplier'
 //查询线路菜单
 // import AdminProductMenu from '@/components/admin/AdminProductMenu'
 //供应商产品审核
-// import AdminProductAudit from '@/components/admin/AdminProductAudit'
+import AdminProductAudit from '@/components/admin/AdminProductAudit'
 //代理商审核
-// import AdminAgents from '@/components/admin/AdminAgents'
+import AdminAgents from '@/components/admin/AdminAgents'
 //供应商利润
-// import AdminVendorProfit from '@/components/admin/AdminVendorProfit'
+import AdminVendorProfit from '@/components/admin/AdminVendorProfit'
 //代理商利润
-// import AdminAgentsProfit from '@/components/admin/AdminAgentsProfit'
+import AdminAgentsProfit from '@/components/admin/AdminAgentsProfit'
 //惠乐游收益
-// import AdminHuileyouReturn from '@/components/admin/AdminHuileyouReturn'
+import AdminHuileyouReturn from '@/components/admin/AdminHuileyouReturn'
 //积分权重
-// import AdminIntegralWeight from '@/components/admin/AdminIntegralWeight'
+import AdminIntegralWeight from '@/components/admin/AdminIntegralWeight'
 //积分权重
-// import AdminIntegralType from '@/components/admin/AdminIntegralType'
+import AdminIntegralType from '@/components/admin/AdminIntegralType'
 /*-------------------------------------门票管理----------------------------------------------*/
-// import TicketTheme from '@/components/ticket/ticketTheme' //门票主题hotelImageType
-// import TicketToExamine from '@/components/ticket/TicketToExamine' //景点审核
-// import TicketToExamineShowHomePage from '@/components/ticket/TicketToExamineShowHomePage'//审核景点是否展示在首页
-// import TicketHomePageBigPicture from '@/components/ticket/TicketHomePageBigPicture'//首页展示大图
-// import TicketHomePageSmallPicture from '@/components/ticket/TicketHomePageSmallPicture'//首页展示小图
+import TicketTheme from '@/components/ticket/ticketTheme' //门票主题hotelImageType
+import TicketToExamine from '@/components/ticket/TicketToExamine' //景点审核
+import TicketToExamineShowHomePage from '@/components/ticket/TicketToExamineShowHomePage'//审核景点是否展示在首页
+import TicketHomePageBigPicture from '@/components/ticket/TicketHomePageBigPicture'//首页展示大图
+import TicketHomePageSmallPicture from '@/components/ticket/TicketHomePageSmallPicture'//首页展示小图
 
 /*-------------------------------------酒店管理----------------------------------------------*/
-// import HotelImageType from '@/components/hotel/HotelImageType' //酒店图片类型主题
-// import HotelRecommendType from '@/components/hotel/HotelRecommendType' //酒店图片类型主题
-// import HotelThemeCategory from '@/components/hotel/HotelThemeCategory' //酒店主题类别
-// import HotelCityRecommendType from '@/components/hotel/HotelCityRecommendType' //酒店城市推荐类型
-// import HotelFacilitiesType from '@/components/hotel/HotelFacilitiesType' //酒店设施类型
-// import HotelFacilities from '@/components/hotel/HotelFacilities' //酒店设施
-// import HotelRoomFacilitiesType from '@/components/hotel/HotelRoomFacilitiesType' //酒店房间设施类型
-// import HotelIconGallery from '@/components/hotel/HotelIconGallery' //酒店图标库
-// import HotelRoomFacilities from '@/components/hotel/HotelRoomFacilities' //酒店房间设施
+import HotelImageType from '@/components/hotel/HotelImageType' //酒店图片类型主题
+import HotelRecommendType from '@/components/hotel/HotelRecommendType' //酒店图片类型主题
+import HotelThemeCategory from '@/components/hotel/HotelThemeCategory' //酒店主题类别
+import HotelCityRecommendType from '@/components/hotel/HotelCityRecommendType' //酒店城市推荐类型
+import HotelFacilitiesType from '@/components/hotel/HotelFacilitiesType' //酒店设施类型
+import HotelFacilities from '@/components/hotel/HotelFacilities' //酒店设施
+import HotelRoomFacilitiesType from '@/components/hotel/HotelRoomFacilitiesType' //酒店房间设施类型
+import HotelIconGallery from '@/components/hotel/HotelIconGallery' //酒店图标库
+import HotelRoomFacilities from '@/components/hotel/HotelRoomFacilities' //酒店房间设施
 /*-------------------------------------广告管理----------------------------------------------*/
 //广告类型
-// import AdType from '@/components/Advertisements/AdType'
+import AdType from '@/components/Advertisements/AdType'
 //广告收费方式
-// import AdChargeWay from '@/components/Advertisements/AdChargeWay'
+import AdChargeWay from '@/components/Advertisements/AdChargeWay'
 //广告位置
-// import AdPosition from '@/components/Advertisements/AdPosition'
+import AdPosition from '@/components/Advertisements/AdPosition'
 //广告申请
-// import AdApply from '@/components/Advertisements/AdApply'
+import AdApply from '@/components/Advertisements/AdApply'
 //广告类型收费方式
-// import AdTypeChargeMode from '@/components/Advertisements/AdTypeChargeMode'
+import AdTypeChargeMode from '@/components/Advertisements/AdTypeChargeMode'
 
 //上传App
-// import UploadApp from '@/components/App/UploadApp'
+import UploadApp from '@/components/App/UploadApp'
 /*-------------------------------------美食管理----------------------------------------------*/
-// import FoodRecommendStoreType from '@/components/food/FoodRecommendStoreType' //美食推荐店铺管理
-// import FoodAttributeListType from '@/components/food/FoodAttributeListType' //美食属性表管理
-// import FoodReviewStoreInformation from '@/components/food/FoodReviewStoreInformation'  //美食审核店面信息
-// import FoodHomePagePicture from '@/components/food/FoodHomePagePicture'//首页展示图片
+import FoodRecommendStoreType from '@/components/food/FoodRecommendStoreType' //美食推荐店铺管理
+import FoodAttributeListType from '@/components/food/FoodAttributeListType' //美食属性表管理
+import FoodReviewStoreInformation from '@/components/food/FoodReviewStoreInformation'  //美食审核店面信息
+import FoodHomePagePicture from '@/components/food/FoodHomePagePicture'//首页展示图片
 
 
+/*-------------------------------------租车管理----------------------------------------------*/
+import CarRent from '@/components/car/CarRent'//汽车管理
+import CarProperties from '@/components/car/CarProperties'//汽车属性
+import CarCityLandmarks from '@/components/car/CarCityLandmarks'//汽车城市地标
+
+/*-------------------------------------微电影管理----------------------------------------------*/
+import MovieReview from '@/components/movie/MovieReview'//汽车属性
+import MovieType from '@/components/movie/MovieType'//汽车城市地标
 export default [
 
 
@@ -80,30 +88,47 @@ export default [
   {
     path: '/',
     name: 'Login',
-    component: (resolve) => require(['@/components/admin/Login'], resolve)
+    component: Login
   },
   {
     path: '/home',
     name: 'Home',
     components: {
-      default: (resolve)=>{require(['@/components/Home/Home'],resolve)}
+      default: Home
     },
     children:[
       {
         path: 'UploadApp',
         components: {
-          default: (resolve)=>{require(['@/components/Home/Home'],resolve)},
-          User: (resolve)=>{require(['@/components/App/UploadApp'],resolve)}
+          default: Home,
+          User: UploadApp
         },
         name: 'UploadApp'
+      },
+      /*-------------------------------------微电影管理----------------------------------------------*/
+      {
+        path: 'movieReview',
+        components: {
+          default: Home,
+          User: MovieReview
+        },
+        name: 'MovieReview'
+      },
+      {
+        path: 'movieType',
+        components: {
+          default: Home,
+          User: MovieType
+        },
+        name: 'MovieType'
       },
       /*-------------------------------------广告管理----------------------------------------------*/
       //广告类型收费方式
       {
         path: 'adTypeChargeMode',
         components: {
-          default: (resolve)=>{require(['@/components/Home/Home'],resolve)},
-          User: (resolve)=>{require(['@/components/Advertisements/AdTypeChargeMode'],resolve)}
+          default: Home,
+          User: AdTypeChargeMode
         },
         name: 'AdTypeChargeMode'
       },
@@ -111,8 +136,8 @@ export default [
       {
         path: 'adApply',
         components: {
-          default: (resolve)=>{require(['@/components/Home/Home'],resolve)},
-          User: (resolve)=>{require(['@/components/Advertisements/AdApply'],resolve)}
+          default: Home,
+          User: AdApply
         },
         name: 'AdApply'
       },
@@ -120,8 +145,8 @@ export default [
       {
         path: 'adType',
         components: {
-          default: (resolve)=>{require(['@/components/Home/Home'],resolve)},
-          User: (resolve)=>{require(['@/components/Advertisements/AdType'],resolve)}
+          default: Home,
+          User: AdType
         },
         name: 'AdType'
       },
@@ -129,9 +154,9 @@ export default [
       {
         path: 'adChargeWay',
         components: {
-          default: (resolve)=>{require(['@/components/Home/Home'],resolve)},
+          default: Home,
           // User: AdChargeWay
-          User: (resolve)=>{require(['@/components/Advertisements/AdChargeWay'],resolve)}
+          User: AdChargeWay
         },
         name: 'AdChargeWay'
       },
@@ -139,50 +164,75 @@ export default [
       {
         path: 'adPosition',
         components: {
-          default: (resolve)=>{require(['@/components/Home/Home'],resolve)},
-          User: (resolve)=>{require(['@/components/Advertisements/AdPosition'],resolve)}
+          default: Home,
+          User:AdPosition
         },
         name: 'AdPosition'
+      },
+      /*-------------------------------------汽车管理----------------------------------------------*/
+      {
+        path: 'carRent',
+        components: {
+          default: Home,
+          User: CarRent
+        },
+        name: 'CarRent'
+      },
+      {
+        path: 'carProperties',
+        components: {
+          default: Home,
+          User: CarProperties
+        },
+        name: 'CarProperties'
+      },
+      {
+        path: 'carCityLandmarks',
+        components: {
+          default: Home,
+          User: CarCityLandmarks
+        },
+        name: 'CarCityLandmarks'
       },
       /*-------------------------------------门票管理----------------------------------------------*/
       //门票主题
       {
         path: 'ticketTheme',
         components: {
-          default: (resolve)=>{require(['@/components/Home/Home'],resolve)},
-          User: (resolve)=>{require(['@/components/ticket/ticketTheme'],resolve)}
+          default:Home,
+          User: TicketTheme
         },
         name: 'TicketTheme'
       },
       {
         path: 'ticketToExamine',
         components: {
-          default: (resolve)=>{require(['@/components/Home/Home'],resolve)},
-          User: (resolve)=>{require(['@/components/ticket/TicketToExamine'],resolve)}
+          default:Home,
+          User: TicketToExamine
         },
         name: 'TicketToExamine'
       },
       {
         path: 'ticketToExamineShowHomePage',
         components: {
-          default: (resolve)=>{require(['@/components/Home/Home'],resolve)},
-          User: (resolve)=>{require(['@/components/ticket/TicketToExamineShowHomePage'],resolve)}
+          default: Home,
+          User: TicketToExamineShowHomePage
         },
         name: 'TicketToExamineShowHomePage'
       },
       {
         path: 'ticketHomePageBigPicture',
         components: {
-          default: (resolve)=>{require(['@/components/Home/Home'],resolve)},
-          User: (resolve)=>{require(['@/components/ticket/TicketHomePageBigPicture'],resolve)}
+          default: Home,
+          User: TicketHomePageBigPicture
         },
         name: 'TicketHomePageBigPicture',
       },
       {
         path: 'ticketHomePageSmallPicture',
         components: {
-          default: (resolve)=>{require(['@/components/Home/Home'],resolve)},
-          User: (resolve)=>{require(['@/components/ticket/TicketHomePageSmallPicture'],resolve)}
+          default: Home,
+          User:TicketHomePageSmallPicture
         },
         name: 'TicketHomePageSmallPicture',
       },
@@ -192,8 +242,8 @@ export default [
       {
         path: 'hotelImageType',
         components: {
-          default: (resolve)=>{require(['@/components/Home/Home'],resolve)},
-          User: (resolve)=>{require(['@/components/hotel/HotelImageType'],resolve)}
+          default:Home,
+          User:HotelImageType
         },
         name: 'HotelImageType'
       },
@@ -201,8 +251,8 @@ export default [
       {
         path: 'hotelRoomFacilitiesType',
         components: {
-          default: (resolve)=>{require(['@/components/Home/Home'],resolve)},
-          User: (resolve)=>{require(['@/components/hotel/HotelRoomFacilitiesType'],resolve)}
+          default: Home,
+          User:HotelRoomFacilitiesType
         },
         name: 'HotelRoomFacilitiesType'
       },
@@ -210,8 +260,8 @@ export default [
       {
         path: 'hotelRoomFacilities',
         components: {
-          default: (resolve)=>{require(['@/components/Home/Home'],resolve)},
-          User: (resolve)=>{require(['@/components/hotel/HotelRoomFacilities'],resolve)}
+          default: Home,
+          User: HotelRoomFacilities
         },
         name: 'HotelRoomFacilities'
       },
@@ -219,8 +269,8 @@ export default [
       {
         path: 'hotelIconGallery',
         components: {
-          default: (resolve)=>{require(['@/components/Home/Home'],resolve)},
-          User: (resolve)=>{require(['@/components/hotel/HotelIconGallery'],resolve)}
+          default: Home,
+          User: HotelIconGallery
         },
         name: 'HotelIconGallery'
       },
@@ -228,8 +278,8 @@ export default [
       {
         path: 'hotelRecommendType',
         components: {
-          default: (resolve)=>{require(['@/components/Home/Home'],resolve)},
-          User: (resolve)=>{require(['@/components/hotel/HotelRecommendType'],resolve)}
+          default: Home,
+          User: HotelRecommendType
         },
         name: 'HotelRecommendType'
       },
@@ -237,8 +287,8 @@ export default [
       {
         path: 'hotelFacilitiesType',
         components: {
-          default: (resolve)=>{require(['@/components/Home/Home'],resolve)},
-          User: (resolve)=>{require(['@/components/hotel/HotelFacilitiesType'],resolve)}
+          default: Home,
+          User: HotelFacilitiesType
         },
         name: 'HotelFacilitiesType'
       },
@@ -246,8 +296,8 @@ export default [
       {
         path: 'hotelFacilities',
         components: {
-          default: (resolve)=>{require(['@/components/Home/Home'],resolve)},
-          User: (resolve)=>{require(['@/components/hotel/HotelFacilities'],resolve)}
+          default: Home,
+          User: HotelFacilities
         },
         name: 'HotelFacilities'
       },
@@ -255,8 +305,8 @@ export default [
       {
         path: 'hotelThemeCategory',
         components: {
-          default: (resolve)=>{require(['@/components/Home/Home'],resolve)},
-          User: (resolve)=>{require(['@/components/hotel/HotelThemeCategory'],resolve)}
+          default: Home,
+          User: HotelThemeCategory
         },
         name: 'HotelThemeCategory'
       },
@@ -264,8 +314,8 @@ export default [
       {
         path: 'hotelCityRecommendType',
         components: {
-          default: (resolve)=>{require(['@/components/Home/Home'],resolve)},
-          User: (resolve)=>{require(['@/components/hotel/HotelCityRecommendType'],resolve)}
+          default: Home,
+          User: HotelCityRecommendType
         },
         name: 'HotelCityRecommendType'
       },
@@ -275,8 +325,8 @@ export default [
       {
         path: 'adminBusinessInformation',
         components: {
-          default: (resolve)=>{require(['@/components/Home/Home'],resolve)},
-          User: (resolve)=>{require(['@/components/admin/AdminBusinessInformation'],resolve)}
+          default: Home,
+          User: AdminBusinessInformation
         },
         name: 'AdminBusinessInformation'
       },
@@ -284,8 +334,8 @@ export default [
       {
         path: 'adminIntegralWeight',
         components: {
-          default: (resolve)=>{require(['@/components/Home/Home'],resolve)},
-          User: (resolve)=>{require(['@/components/admin/AdminIntegralWeight'],resolve)}
+          default: Home,
+          User: AdminIntegralWeight
         },
         name: 'AdminIntegralWeight'
       },
@@ -293,8 +343,8 @@ export default [
       {
         path: 'adminIntegralType',
         components: {
-          default: (resolve)=>{require(['@/components/Home/Home'],resolve)},
-          User: (resolve)=>{require(['@/components/admin/AdminIntegralType'],resolve)}
+          default: Home,
+          User: AdminIntegralType
         },
         name: 'AdminIntegralType'
       },
@@ -302,7 +352,7 @@ export default [
       {
         path: 'adminSupplier',
         components: {
-          default: (resolve)=>{require(['@/components/Home/Home'],resolve)},
+          default: Home,
           User: AdminSupplier
           // User: (resolve)=>{require(['@/components/Home/Home'],resolve)}
         },
@@ -312,16 +362,16 @@ export default [
       {
         path: 'adminVendorProfit',
         components: {
-          default: (resolve)=>{require(['@/components/Home/Home'],resolve)},
-          User: (resolve)=>{require(['@/components/admin/AdminVendorProfit'],resolve)}
+          default: Home,
+          User: AdminVendorProfit
         },
         name: 'AdminVendorProfit'
       },
       {
         path: 'adminAgentsProfit',
         components: {
-          default: (resolve)=>{require(['@/components/Home/Home'],resolve)},
-          User: (resolve)=>{require(['@/components/admin/AdminAgentsProfit'],resolve)}
+          default: Home,
+          User: AdminAgentsProfit
         },
         name: 'AdminAgentsProfit'
       },
@@ -329,8 +379,8 @@ export default [
       {
         path: 'adminAgents',
         components: {
-          default: (resolve)=>{require(['@/components/Home/Home'],resolve)},
-          User: (resolve)=>{require(['@/components/admin/AdminAgents'],resolve)}
+          default: Home,
+          User: AdminAgents
         },
         name: 'AdminAgents'
       },
@@ -338,8 +388,8 @@ export default [
       {
         path: 'adminProductAudit',
         components: {
-          default: (resolve)=>{require(['@/components/Home/Home'],resolve)},
-          User: (resolve)=>{require(['@/components/admin/AdminProductAudit'],resolve)}
+          default: Home,
+          User: AdminProductAudit
         },
         name: 'AdminProductAudit'
       },
@@ -347,35 +397,35 @@ export default [
       {
         path: 'adminHuileyouReturn',
         components: {
-          default: (resolve)=>{require(['@/components/Home/Home'],resolve)},
-          User: (resolve)=>{require(['@/components/admin/AdminHuileyouReturn'],resolve)}
+          default: Home,
+          User: AdminHuileyouReturn
         },
         name: 'AdminHuileyouReturn'
       },
-      //系统菜单
-      {
-        path: 'adminSystemMenu',
-        components: {
-          default: (resolve)=>{require(['@/components/Home/Home'],resolve)},
-          User: (resolve)=>{require(['@/components/admin/AdminSystemMenu'],resolve)}
-        },
-        name: 'AdminSystemMenu'
-      },
-      {
-        path: 'adminProductMenu',
-        components: {
-          default: (resolve)=>{require(['@/components/Home/Home'],resolve)},
-          User: (resolve)=>{require(['@/components/admin/AdminProductMenu'],resolve)}
-        },
-        name: 'AdminProductMenu'
-      },
+      // //系统菜单
+      // {
+      //   path: 'adminSystemMenu',
+      //   components: {
+      //     default: Home,
+      //     User:AdminSystemMenu
+      //   },
+      //   name: 'AdminSystemMenu'
+      // },
+      // {
+      //   path: 'adminProductMenu',
+      //   components: {
+      //     default: Home,
+      //     User: AdminProductMenu
+      //   },
+      //   name: 'AdminProductMenu'
+      // },
       /*-------------------------------------美食管理----------------------------------------------*/
       //美食推荐店铺
       {
         path: 'FoodRecommendStoreType',
         components: {
-          default: (resolve)=>{require(['@/components/Home/Home'],resolve)},
-          User: (resolve)=>{require(['@/components/food/FoodRecommendStoreType'],resolve)}
+          default: Home,
+          User: FoodRecommendStoreType
         },
         name: 'FoodRecommendStoreType'
       },
@@ -383,8 +433,8 @@ export default [
       {
         path: 'FoodAttributeListType',
         components: {
-          default: (resolve)=>{require(['@/components/Home/Home'],resolve)},
-          User: (resolve)=>{require(['@/components/food/FoodAttributeListType'],resolve)}
+          default: Home,
+          User: FoodAttributeListType
         },
         name: 'FoodAttributeListType'
       },
@@ -392,8 +442,8 @@ export default [
       {
         path: 'FoodReviewStoreInformation',
         components: {
-          default: (resolve)=>{require(['@/components/Home/Home'],resolve)},
-          User: (resolve)=>{require(['@/components/food/FoodReviewStoreInformation'],resolve)}
+          default: Home,
+          User: FoodReviewStoreInformation
         },
         name: 'FoodReviewStoreInformation'
       },
@@ -401,8 +451,8 @@ export default [
       {
         path:'foodHomePagePicture',
         components: {
-          default: (resolve)=>{require(['@/components/Home/Home'],resolve)},
-          User: (resolve)=>{require(['@/components/food/FoodHomePagePicture'],resolve)}
+          default: Home,
+          User: FoodHomePagePicture
         },
         name: 'FoodHomePagePicture'
       }

@@ -222,6 +222,31 @@
                     </ul>
                   </li>
                   <li>
+                    <a href="javascript:;"><i class="icon-ticket"></i> <span>租车管理</span></a>
+                    <ul>
+                      <li>
+                        <router-link to="/home/carRent">租车汽车管理</router-link>
+                      </li>
+                      <li>
+                        <router-link to="/home/carProperties">租车属性管理</router-link>
+                      </li>
+                      <li>
+                        <router-link to="/home/carCityLandmarks">租车城市地标管理</router-link>
+                      </li>
+                    </ul>
+                  </li>
+                  <li>
+                    <a href="javascript:;"><i class="icon-ticket"></i> <span>微电影管理</span></a>
+                    <ul>
+                      <li>
+                        <router-link to="/home/movieReview">微电影审核管理</router-link>
+                      </li>
+                      <li>
+                        <router-link to="/home/movieType">微电影类型管理</router-link>
+                      </li>
+                    </ul>
+                  </li>
+                  <li>
                     <a href="javascript:;"><i class="icon-ticket"></i> <span>上传App</span></a>
                     <ul>
                       <li>

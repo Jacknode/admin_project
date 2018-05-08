@@ -111,7 +111,6 @@ export default {
   },
   //上传图片
   hotelUploadAdminImgs(store,data){
-    console.log(this.data)
     //图片上传
     return new Promise((relove, reject) => {
       axios.post('http://image.1000da.com.cn/PostImage/PostToService', JSON.stringify(data), {

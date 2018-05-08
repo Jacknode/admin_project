@@ -230,4 +230,15 @@ export const getStatue = val=>{
     default:
       return '未知';
   }
-}
+};
+//手自排
+export const getVariableSpeed = val=>{
+  switch (Number(val)) {
+    case 1:
+      return '自动挡';
+    case 2:
+      return '手动挡';
+    default:
+      return '未知';
+  }
+};
