@@ -66,7 +66,7 @@
         width="50%">
         <img v-lazy="imgUrl" width="100%">
         <span slot="footer" class="dialog-footer">
-          <el-button @click="dialogVisible = false">取 消</el-button>
+          <el-button @click="bigImageDialog = false">取 消</el-button>
         </span>
       </el-dialog>
 
