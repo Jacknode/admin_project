@@ -252,6 +252,9 @@
                       <li>
                         <router-link to="/home/uploadApp">上传管理</router-link>
                       </li>
+                      <li>
+                        <router-link to="/home/demo">上传demo</router-link>
+                      </li>
                     </ul>
                   </li>
                 </ul>

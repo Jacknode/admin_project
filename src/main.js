@@ -11,6 +11,7 @@ import router from './router'
 import store from './store/index'
 import axios from 'axios'
 import * as filters from './filters'
+
 // axios.interceptors.request.use((config) => {
 //   config.data = qs.stringify(config.data);
 //   return config;

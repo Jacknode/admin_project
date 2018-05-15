@@ -9,7 +9,7 @@
           </el-form-item>
           <el-form-item>
             <!--<el-input type="text" v-model="filmName" auto-complete="off" placeholder="请选择微电影" size="small"></el-input>-->
-            <el-select v-model="movieAudit.vf_ve_Type" placeholder="请选择审核状态" size="small">
+            <el-select v-model="filmName" placeholder="请选择审核状态" size="small">
               <el-option
                 v-for="item in filmType"
                 :key="item.value"
@@ -43,17 +43,14 @@
               </el-form-item>
               <el-form-item label="大小:">
                 <span>{{ props.row.vf_ve_Content.vf_vo_Size}}M</span>
-                <!--<el-button v-popover:popover1 size="small">移入查看</el-button>-->
-              </el-form-item>
+             </el-form-item>
               <el-form-item label="文件扩展名:">
                 <span>{{ props.row.vf_ve_Content.vf_vo_Extend}}</span>
               </el-form-item>
               <el-form-item label="文件地址:">
                 <span>{{ props.row.vf_ve_Content.vf_vo_FileURL}}</span>
               </el-form-item>
-              <el-form-item label="视频类型:">
-                <span>{{ props.row.vf_ve_Content.vf_vo_Type}}</span>
-              </el-form-item>
+
               <el-form-item label="视频标题:">
                 <span>{{ props.row.vf_ve_Content.vf_vo_Title}}</span>
 
@@ -62,16 +59,15 @@
                 <span>{{ props.row.vf_ve_Content.vf_vo_ImageURL}}</span>
 
               </el-form-item>
-              <!--<el-form-item label="创建时间:">-->
-                <!--<span>{{ props.row.vf_ve_Content.vf_vo_CreateTime}}</span>-->
-              <!--</el-form-item>-->
-              <el-form-item label="创建时间:">
-                <span>{{ props.row.vf_ve_Content.vf_vo_Introduce}}</span>
+             <el-form-item label="创建时间:">
+                <span>{{ props.row.vf_ve_Content.vf_ve_CreateTime}}</span>
               </el-form-item>
               <el-form-item label="视频详情:">
                 <span>{{ props.row.vf_ve_Content.vf_vo_Remark}}</span>
               </el-form-item>
-
+              <el-form-item label="视频简介:">
+                <span>{{ props.row.vf_ve_Content.vf_vo_Introduce}}</span>
+              </el-form-item>
 
             </el-form>
           </template>
@@ -102,11 +98,16 @@
               v-show="scope.row.ts_tg_IsPass!=1"
               @click="approval(scope.row.vf_ve_ID)">审核
             </el-button>
+
+            <el-button
+              size="mini"
+              type="primary"
+              @click="Update(scope.row)">修改
+            </el-button>
           </template>
         </el-table-column>
       </el-table>
-
-      <!--分页-->
+     <!--分页-->
       <div class="block" style="float: right;padding: 10px 0">
 
         <el-pagination
@@ -142,6 +143,54 @@
         <el-button type="primary" @click="approvalStatusSubmit">确 定</el-button>
       </div>
     </el-dialog>
+
+    <!--修改审核表-->
+    <el-dialog title="修改微电影审核" :visible.sync="updateDialog">
+
+      <el-form :model="updateObj">
+
+        <el-form-item label="作者:" :label-width="formLabelWidth">
+          <el-input v-model="updateObj.data.vf_ve_Content.vf_vo_AuthorID" placeholder="作者"></el-input>
+        </el-form-item>
+
+        <el-form-item label="大小:" :label-width="formLabelWidth">
+        <el-input v-model="updateObj.data.vf_ve_Content.vf_vo_Size" placeholder="大小"></el-input>
+      </el-form-item>
+        <el-form-item label="时长:" :label-width="formLabelWidth">
+        <el-input v-model="updateObj.data.vf_ve_Content.vf_vo_Time" placeholder="时长"></el-input>
+       </el-form-item>
+        <el-form-item label="文件地址:" :label-width="formLabelWidth">
+          <el-input v-model="updateObj.data.vf_ve_Content.vf_vo_FileURL" placeholder="文件地址"></el-input>
+        </el-form-item>
+        <el-form-item label="文件扩展名:" :label-width="formLabelWidth">
+          <el-input v-model="updateObj.data.vf_ve_Content.vf_vo_Extend" placeholder="文件扩展名"></el-input>
+        </el-form-item>
+        <el-form-item label="视频图片:" :label-width="formLabelWidth">
+          <el-input v-model="updateObj.data.vf_ve_Content.vf_vo_ImageURL" placeholder="视频图片"></el-input>
+        </el-form-item>
+        <el-form-item label="视频标题:" :label-width="formLabelWidth">
+          <el-input v-model="updateObj.data.vf_ve_Content.vf_vo_Title" placeholder="视频标题"></el-input>
+        </el-form-item>
+        <el-form-item label="创建时间:" :label-width="formLabelWidth">
+          <el-input v-model="updateObj.data.vf_ve_CreateTime" placeholder="创建时间"></el-input>
+        </el-form-item>
+        <el-form-item label="视频详情:" :label-width="formLabelWidth">
+          <el-input v-model="updateObj.data.vf_ve_Content.vf_vo_Remark" placeholder="视频详情"></el-input>
+        </el-form-item>
+        <el-form-item label="视频简介:" :label-width="formLabelWidth">
+          <el-input v-model="updateObj.data.vf_ve_Content.vf_vo_Introduce" placeholder="视频详情"></el-input>
+        </el-form-item>
+        <el-form-item label="编号分类:" :label-width="formLabelWidth">
+          <el-input v-model="updateObj.data.vf_ve_Content.vf_te_IDs" placeholder="编号分类"></el-input>
+        </el-form-item>
+
+      </el-form>
+
+      <div slot="footer" class="dialog-footer">
+        <el-button @click="updateDialog = false">取 消</el-button>
+        <el-button type="primary" @click="updateSubmit">确 定</el-button>
+      </div>
+    </el-dialog>
   </div>
 </template>
 <script>
@@ -150,18 +199,46 @@
     name: '',
     data(){
       return {
+        updateObj:{
+          "loginUserID": "huileyou",  //惠乐游用户ID
+          "loginUserPass": "123",  //惠乐游用户密码
+          "operateUserID": "",  //操作员编码
+          "operateUserName": "",  //操作员名称
+          "pcName": "",  //机器码
+          "data": {
+            "vf_ve_ID": "",  //审核表编号
+            "vf_ve_Type": "",  //视频类型
+            "vf_ve_Content": {  //审核表内容
+              "vf_vo_Time": "",  //时长
+              "vf_vo_Size": "",  //大小
+              "vf_vo_Extend": "",  //文件扩展名
+              "vf_vo_FileURL": "",  //文件地址
+              "vf_vo_AuthorID": "",  //作者
+              "vf_vo_Title": "视频标题",  //标题
+              "vf_vo_ImageURL": "",  //视频图片
+              "vf_vo_CreateTime": "",  //创建时间
+              "vf_vo_Introduce": "",  //简介
+              "vf_vo_Remark": "",  //详情
+              "vf_te_IDs": ""
+            }
+          }
+
+        },
+        updateDialog:false,
         filmName:"",
         total:0,
         filmType:[{
-          value: '选项1',
+          value:"0",
           label: '微电影'
         }, {
-          value: '选项2',
+          value: "1",
           label: '广告视频'
-        }, {
-          value: '选项3',
+        },
+          {
+          value:"2",
           label: '教育视频'
-        }],
+        }
+        ],
         approvalOptions:{
            "loginUserID": "huileyou",
            "loginUserPass":"123",
@@ -200,13 +277,14 @@
         formLabelWidth:'120px',
 
         isLoading:false,
-
         approvalStatusDialog:false,
 
       }
     },
     computed: mapGetters([
-    'movieAudit'
+      'movieAudit',
+      'updateMovieReviewObj'
+
     ]),
 
     created(){
@@ -221,11 +299,8 @@
       handleSelect(item) {
 
     },
-
-
       initData(name,page){
-
-        let options = {
+      let options = {
           "loginUserID": "huileyou",
           "loginUserPass": "123",
           "operateUserID": "",//操作员编码
@@ -253,8 +328,7 @@
     //查询
       search(){
          this.initData(this.filmName)
-
-      },
+     },
       //审核
       approval(id){
 
@@ -287,7 +361,7 @@
             this.approvalStatusDialog = false;
           }else{
 
-          //   //审核失败直接删除
+          // 审核失败直接删除
 
             this.$store.dispatch('AuditSubmitNo',this.deleteOption)
 
@@ -313,6 +387,32 @@
       check(){
 
         //if(movieAudit.vf_ve_Type){}
+      },
+      //修改
+      Update(rowData){
+        console.log(rowData)
+        this.updateObj.data = rowData;
+        this.updateDialog = true;
+        this.$store.commit('setTranstionFalse',this.updateObj);
+      },
+      //修改提交
+      updateSubmit(){
+
+
+        this.$store.dispatch('UpdateMovieReview',this.updateObj)
+          .then((suc)=>{
+            this.$notify({
+              message: suc,
+              type: 'success'
+            });
+           this.initData(this.filmName)
+          },err=>{
+            this.$notify({
+              message: err,
+              type: 'error'
+            });
+          });
+        this.updateDialog = false
       },
 
     },

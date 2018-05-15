@@ -71,16 +71,15 @@ export default {
       }).then(data=>{
 
         var data = data.data;
-
         if(Number(data.resultcode)==200){
 
-          for (let i=0;i<data.data.length;i++){
-         console.log(JSON.parse(data.data[i].vf_ve_Content))
-          let str = JSON.parse(data.data[i].vf_ve_Content)
-
-            data.data[i].vf_ve_Content = str;
-          }
-          console.log(data.data)
+         //  for (let i=0;i<data.data.length;i++){
+         // console.log(JSON.parse(data.data[i].vf_ve_Content))
+         //  let str = JSON.parse(data.data[i].vf_ve_Content)
+         //
+         //    data.data[i].vf_ve_Content = str;
+         //  }
+         //  console.log(data.data)
           commit('initMovieAudit',data.data)
           relove(Number(data.totalRows))
 

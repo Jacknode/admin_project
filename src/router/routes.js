@@ -73,6 +73,8 @@ import CarCityLandmarks from '@/components/car/CarCityLandmarks'//汽车城市�
 /*-------------------------------------微电影管理----------------------------------------------*/
 import MovieReview from '@/components/movie/MovieReview'//汽车属性
 import MovieType from '@/components/movie/MovieType'//汽车城市地标
+
+import demo from '@/components/App/demo'//汽车城市地标
 export default [
 
 
@@ -97,6 +99,14 @@ export default [
       default: Home
     },
     children:[
+      {
+        path: 'demo',
+        components: {
+          default: Home,
+          User: demo
+        },
+        name: 'demo'
+      },
       {
         path: 'UploadApp',
         components: {
