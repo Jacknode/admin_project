@@ -22,5 +22,14 @@ export default {
 
   },
 
+  initUpdateMovieReviewObj(state,id){
+    state.updateMovieReviewObj = state.movieAudit.filter(item=>{
+      if(item.vf_ve_ID==id){
+        return true
+      }
+      return false
+    })[0]
+  },
+
 
 }

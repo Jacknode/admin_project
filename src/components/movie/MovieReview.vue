@@ -126,7 +126,7 @@
     <el-dialog title="审核状态" :visible.sync="approvalStatusDialog">
       <el-form :model="approvalOptions">
         <el-form-item label="审核状态:" :label-width="formLabelWidth">
-          <el-radio v-model="approvalOptions.IsPass" label="1">审核成功</el-radio>
+          <el-radio v-model="approvalOptions.IsPass" label="1">功审核成</el-radio>
           <el-radio v-model="approvalOptions.IsPass" label="2">审核失败</el-radio>
         </el-form-item>
         <el-form-item label="审核失败原因:" :label-width="formLabelWidth" v-show="approvalOptions.IsPass!=1">
@@ -394,10 +394,10 @@
         this.updateObj.data = rowData;
         this.updateDialog = true;
         this.$store.commit('setTranstionFalse',this.updateObj);
+        this.$store.commit('initUpdateMovieReviewObj',rowData)
       },
       //修改提交
       updateSubmit(){
-
 
         this.$store.dispatch('UpdateMovieReview',this.updateObj)
           .then((suc)=>{
@@ -412,6 +412,7 @@
               type: 'error'
             });
           });
+        console.log(2)
         this.updateDialog = false
       },
 
