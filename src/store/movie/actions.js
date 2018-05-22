@@ -60,6 +60,23 @@ export default {
       })
     })
   },
+  //删除
+  DeleteMovieType(store,data){
+    return new Promise((relove, reject) => {
+      axios.post('http://webservice.1000da.com.cn/Type/Delete',JSON.stringify(data),{
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded'
+        }
+      }).then(data=>{
+        var data = data.data;
+        if(Number(data.resultcode)==200){
+          relove(data.resultcontent)
+        }else{
+          reject(data.resultcontent)
+        }
+      })
+    })
+  },
   /********************************************微电影审核*******************************************************/
   initMovieAudit({commit},data){
 
