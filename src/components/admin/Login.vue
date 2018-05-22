@@ -66,8 +66,6 @@
             .then(data=>{
               this.logining = false;
               var data = data.data;
-//              console.log(data);
-//              return;
               if(Number(data.resultcode)==200){
                 this.$store.commit('showAdmin');
                 sessionStorage.setItem('admin',JSON.stringify(data.data));

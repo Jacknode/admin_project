@@ -4,7 +4,7 @@
 //登录
 import Login from '@/components/admin/Login'
 //Home
-import Home from '@/components/Home/Home'//理应注释的
+import Home from '@/components/Home/newHome'//理应注释的
 //商家信息
 import AdminBusinessInformation from '@/components/admin/AdminBusinessInformation'
 //供应商信息
@@ -75,6 +75,7 @@ import MovieReview from '@/components/movie/MovieReview'//汽车属性
 import MovieType from '@/components/movie/MovieType'//汽车城市地标
 
 import demo from '@/components/App/demo'//汽车城市地标
+import demo1 from '@/components/App/demo1'//汽车城市地标
 export default [
 
 
@@ -106,6 +107,14 @@ export default [
           User: demo
         },
         name: 'demo'
+      },
+      {
+        path: 'demo1',
+        components: {
+          default: Home,
+          User: demo1
+        },
+        name: 'demo1'
       },
       {
         path: 'UploadApp',

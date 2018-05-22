@@ -43,7 +43,7 @@
               </el-form-item>
               <el-form-item label="大小:">
                 <span>{{ props.row.vf_ve_Content.vf_vo_Size}}M</span>
-             </el-form-item>
+              </el-form-item>
               <el-form-item label="文件扩展名:">
                 <span>{{ props.row.vf_ve_Content.vf_vo_Extend}}</span>
               </el-form-item>
@@ -59,7 +59,7 @@
                 <span>{{ props.row.vf_ve_Content.vf_vo_ImageURL}}</span>
 
               </el-form-item>
-             <el-form-item label="创建时间:">
+              <el-form-item label="创建时间:">
                 <span>{{ props.row.vf_ve_Content.vf_ve_CreateTime}}</span>
               </el-form-item>
               <el-form-item label="视频详情:">
@@ -87,7 +87,7 @@
           prop="vf_ve_CreateTime">
           <template slot-scope="props">
             <span>{{ props.row.vf_ve_Content.vf_vo_CreateTime}}</span>
-          <!--<span> {{approvalOptions.vf_ve_CreateTime}}</span>-->
+            <!--<span> {{approvalOptions.vf_ve_CreateTime}}</span>-->
           </template>
         </el-table-column>
         <el-table-column label="操作">
@@ -107,7 +107,7 @@
           </template>
         </el-table-column>
       </el-table>
-     <!--分页-->
+      <!--分页-->
       <div class="block" style="float: right;padding: 10px 0">
 
         <el-pagination
@@ -120,7 +120,7 @@
 
         </el-pagination>
       </div>
-   </section>
+    </section>
 
     <!--审核状态-->
     <el-dialog title="审核状态" :visible.sync="approvalStatusDialog">
@@ -154,11 +154,11 @@
         </el-form-item>
 
         <el-form-item label="大小:" :label-width="formLabelWidth">
-        <el-input v-model="updateObj.data.vf_ve_Content.vf_vo_Size" placeholder="大小"></el-input>
-      </el-form-item>
+          <el-input v-model="updateObj.data.vf_ve_Content.vf_vo_Size" placeholder="大小"></el-input>
+        </el-form-item>
         <el-form-item label="时长:" :label-width="formLabelWidth">
-        <el-input v-model="updateObj.data.vf_ve_Content.vf_vo_Time" placeholder="时长"></el-input>
-       </el-form-item>
+          <el-input v-model="updateObj.data.vf_ve_Content.vf_vo_Time" placeholder="时长"></el-input>
+        </el-form-item>
         <el-form-item label="文件地址:" :label-width="formLabelWidth">
           <el-input v-model="updateObj.data.vf_ve_Content.vf_vo_FileURL" placeholder="文件地址"></el-input>
         </el-form-item>
@@ -199,7 +199,7 @@
     name: '',
     data(){
       return {
-        updateObj:{
+        updateObj: {
           "loginUserID": "huileyou",  //惠乐游用户ID
           "loginUserPass": "123",  //惠乐游用户密码
           "operateUserID": "",  //操作员编码
@@ -224,46 +224,46 @@
           }
 
         },
-        updateDialog:false,
-        filmName:"",
-        total:0,
-        filmType:[{
-          value:"0",
+        updateDialog: false,
+        filmName: "",
+        total: 0,
+        filmType: [{
+          value: "0",
           label: '微电影'
         }, {
           value: "1",
           label: '广告视频'
         },
           {
-          value:"2",
-          label: '教育视频'
-        }
+            value: "2",
+            label: '教育视频'
+          }
         ],
-        approvalOptions:{
-           "loginUserID": "huileyou",
-           "loginUserPass":"123",
-           "operateUserID":"",
-           "operateUserName":"",
-            "pcName":"",
-            "vf_ve_ID": "",//审核表编号
-            "vf_ve_Type": "",//视频类型
-            "vf_ve_Content": "",//审核表内容
-            "vf_ve_CreateTime": "",//创建时间
-            // "goodID": '',//商户号
-            "IsPass": '1',
+        approvalOptions: {
+          "loginUserID": "huileyou",
+          "loginUserPass": "123",
+          "operateUserID": "",
+          "operateUserName": "",
+          "pcName": "",
+          "vf_ve_ID": "",//审核表编号
+          "vf_ve_Type": "",//视频类型
+          "vf_ve_Content": "",//审核表内容
+          "vf_ve_CreateTime": "",//创建时间
+          // "goodID": '',//商户号
+          "IsPass": '1',
 
-          failReason:'',//审核失败原因
+          failReason: '',//审核失败原因
         },
-        checkOption:{
+        checkOption: {
           "loginUserID": "huileyou",  //惠乐游用户ID
           "loginUserPass": "123",  //惠乐游用户密码
           "operateUserID": "",//操作员编码
           "operateUserName": "",//操作员名称
           "pcName": "",  //机器码
           "vf_ve_ID": "",//审核表编号
-          "vf_vo_PasserID":""//审核员编码
-      },
-        deleteOption:{
+          "vf_vo_PasserID": ""//审核员编码
+        },
+        deleteOption: {
           "loginUserID": "huileyou",
           "loginUserPass": "123",
           "operateUserID": "",//操作员编码
@@ -274,10 +274,10 @@
           }
 
         },
-        formLabelWidth:'120px',
+        formLabelWidth: '120px',
 
-        isLoading:false,
-        approvalStatusDialog:false,
+        isLoading: false,
+        approvalStatusDialog: false,
 
       }
     },
@@ -293,48 +293,48 @@
     methods: {
       //分页
       handleCurrentChange(num){
-        this.initData(this.filmName,num)
+        this.initData(this.filmName, num)
 
       },
       handleSelect(item) {
 
-    },
-      initData(name,page){
-      let options = {
+      },
+      initData(name, page){
+        let options = {
           "loginUserID": "huileyou",
           "loginUserPass": "123",
           "operateUserID": "",//操作员编码
           "operateUserName": "",//操作员名称
           "pcName": "",
-          "vf_ve_ID":"",//审核表编号
-          "vf_ve_Type":name?name:"",//视频类型
-          "page":page?page:1,//页码
-          "rows":5//条数
+          "vf_ve_ID": "",//审核表编号
+          "vf_ve_Type": name ? name : "",//视频类型
+          "page": page ? page : 1,//页码
+          "rows": 5//条数
 
- }
+        }
 
         this.isLoading = true;
-        this.$store.dispatch('initMovieAudit',options)
-          .then(data=>{
-            this.total = data;
-            this.isLoading = false;
-          },err=>{
-            this.$notify({
-              message: err,
-              type: 'error'
-            });
-          })
+        this.$store.dispatch('initMovieAudit', options)
+        .then(data => {
+          this.total = data;
+          this.isLoading = false;
+        }, err => {
+          this.$notify({
+            message: err,
+            type: 'error'
+          });
+        })
       },
-    //查询
+      //查询
       search(){
-         this.initData(this.filmName)
-     },
+        this.initData(this.filmName)
+      },
       //审核
       approval(id){
 
-        this.deleteOption.data.vf_ve_ID=id;
-         this.checkOption.vf_ve_ID=id;
-        //this.$store.commit('setTranstionFalse');
+        this.deleteOption.data.vf_ve_ID = id;
+        this.checkOption.vf_ve_ID = id;
+        this.$store.commit('setTranstionFalse');
         this.approvalStatusDialog = true;
 
       },
@@ -342,46 +342,45 @@
       approvalStatusSubmit(){
 
 
-          if (this.approvalOptions.IsPass==1){
-            //审核成功添加到审核表
-            console.log(this.checkOption)
-            this.$store.dispatch('AuditSubmitOk',this.checkOption)
-              .then(success=>{
-                this.$notify({
-                  message: success,
-                  type: 'success'
-                });
-                this.initData(this.id)
-              },err=>{
-                this.$notify({
-                  message: err,
-                  type: 'error'
-                });
-              })
-            this.approvalStatusDialog = false;
-          }else{
+        if (this.approvalOptions.IsPass == 1) {
+          //审核成功添加到审核表
+          console.log(this.checkOption)
+          this.$store.dispatch('AuditSubmitOk', this.checkOption)
+          .then(success => {
+            this.$notify({
+              message: success,
+              type: 'success'
+            });
+            this.initData(this.id)
+          }, err => {
+            this.$notify({
+              message: err,
+              type: 'error'
+            });
+          })
+          this.approvalStatusDialog = false;
+        } else {
 
           // 审核失败直接删除
 
-            this.$store.dispatch('AuditSubmitNo',this.deleteOption)
+          this.$store.dispatch('AuditSubmitNo', this.deleteOption)
 
-              .then(success=>{
-                this.$notify({
-                  message: success,
-                  type: 'success'
-                });
-                this.initData(this.id)
-              },err=>{
-                this.$notify({
-                  message: err,
-                  type: 'error'
-                });
-              })
-            this.approvalStatusDialog = false;
+          .then(success => {
+            this.$notify({
+              message: success,
+              type: 'success'
+            });
+            this.initData(this.id)
+          }, err => {
+            this.$notify({
+              message: err,
+              type: 'error'
+            });
+          });
+          this.approvalStatusDialog = false;
 
-          };
-      //   this.approvalOptions.goodID = this.sm_ai_ID
-
+        }
+        //   this.approvalOptions.goodID = this.sm_ai_ID
       },
       //checkType,微电影状态改成对应的名字
       check(){
@@ -393,25 +392,25 @@
         console.log(rowData)
         this.updateObj.data = rowData;
         this.updateDialog = true;
-        this.$store.commit('setTranstionFalse',this.updateObj);
-        this.$store.commit('initUpdateMovieReviewObj',rowData)
+        this.$store.commit('setTranstionFalse', this.updateObj);
+        this.$store.commit('initUpdateMovieReviewObj', rowData)
       },
       //修改提交
       updateSubmit(){
 
-        this.$store.dispatch('UpdateMovieReview',this.updateObj)
-          .then((suc)=>{
-            this.$notify({
-              message: suc,
-              type: 'success'
-            });
-           this.initData(this.filmName)
-          },err=>{
-            this.$notify({
-              message: err,
-              type: 'error'
-            });
+        this.$store.dispatch('UpdateMovieReview', this.updateObj)
+        .then((suc) => {
+          this.$notify({
+            message: suc,
+            type: 'success'
           });
+          this.initData(this.filmName)
+        }, err => {
+          this.$notify({
+            message: err,
+            type: 'error'
+          });
+        });
         console.log(2)
         this.updateDialog = false
       },

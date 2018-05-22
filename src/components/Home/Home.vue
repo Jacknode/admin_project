@@ -255,6 +255,9 @@
                       <li>
                         <router-link to="/home/demo">上传demo</router-link>
                       </li>
+                      <li>
+                        <router-link to="/home/demo1">测试</router-link>
+                      </li>
                     </ul>
                   </li>
                 </ul>
