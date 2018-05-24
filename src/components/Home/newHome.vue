@@ -376,11 +376,23 @@
   }
 </script>
 <style>
+  .navbar-inverse{
+    background-color: #28343a;
+    border-color:#28343a;
+  }
+  .navbar{
+    margin-bottom: 0;
+    border-radius: 0;
+  }
+  .el-menu-vertical-demo:not(.el-menu--collapse) {
+    width: 200px;
+    min-height: 1400px;
+  }
   .el-main{
     padding: 0;
   }
   .el-loading-spinner .circular {
-    margin-left: 50%;
+    /*margin-left: 50%;*/
   }
 
   .edui-default {
