@@ -1,7 +1,7 @@
 /**
  * Created by leibo on 18/5/3.
  */
-import axios from 'axios'
+//import axios from 'axios'
 
 export default {
   //汽车

@@ -1,7 +1,7 @@
 /**
  * Created by leibo on 18/2/6.
  */
-import axios from 'axios';
+//import axios from 'axios';
 export default {
   //Home初始化跟团游栏目
   initHomeAdminGroupTour({commit}, data) {
