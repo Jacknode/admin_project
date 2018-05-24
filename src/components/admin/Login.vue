@@ -58,7 +58,7 @@
               "sm_mr_Code": this.ruleForm2.account,
               "sm_mr_Password": this.ruleForm2.checkPass,
             };
-            this.$http.post('http://webservice.1000da.com.cn/Manager/GetValidateByPassword',JSON.stringify(loginParams),{
+            axios.post('http://webservice.1000da.com.cn/Manager/GetValidateByPassword',JSON.stringify(loginParams),{
               headers: {
                 'Content-Type': 'application/x-www-form-urlencoded'
               }
@@ -70,7 +70,7 @@
                 this.$store.commit('showAdmin');
                 sessionStorage.setItem('admin',JSON.stringify(data.data));
                 this.$router.push({name:'AdminSupplier'});
-                window.location.reload()
+                // window.location.reload()
               }else{
                 this.$message({
                   message: data.resultcontent,

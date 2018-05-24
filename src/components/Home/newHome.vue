@@ -43,7 +43,9 @@
         active-text-color="#ffd04b">
         <el-submenu index="1">
           <template slot="title">
-            <i class="icon-home"></i>
+            <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+            <i class="fa fa-money"></i>
+
             <span>利润管理</span>
           </template>
           <el-menu-item-group>
@@ -58,7 +60,7 @@
         </el-submenu>
         <el-submenu index="2">
           <template slot="title">
-            <i class="icon-shield-check"></i>
+            <i class="fa fa-user-o"></i>
             <span>审核管理</span>
           </template>
           <el-menu-item-group>
