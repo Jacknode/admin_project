@@ -1,15 +1,15 @@
 // The Vue build version to load with the `import` command
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
-import Vue from 'vue'
-import ElementUI from 'element-ui'
+// import Vue from 'vue'
+// import ElementUI from 'element-ui'
 // import '@/assets/css/reset.css'
 import '@/assets/css/animate.css'
 import '@/assets/css/icons/icomoon/styles.css'
-import 'element-ui/lib/theme-chalk/index.css'
+// import 'element-ui/lib/theme-chalk/index.css'
 import App from './App'
 import router from './router'
 import store from './store/index'
-import axios from 'axios'
+// import axios from 'axios'
 import * as filters from './filters'
 
 // axios.interceptors.request.use((config) => {
@@ -29,8 +29,8 @@ Vue.use(VueLazyLoad,{
   loading:'../static/img/loading.gif'
 });
 
-Vue.use(ElementUI);
-Vue.prototype.$http = axios;
+// Vue.use(ElementUI);
+// Vue.prototype.$http = axios;
 
 /* eslint-disable no-new */
 new Vue({

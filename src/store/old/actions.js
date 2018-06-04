@@ -138,20 +138,20 @@ export default {
         if(Number(data.resultcode)==200){
           let resulte = data.data
           for (var i = 0; i < resulte.length; i++) {
-            if (resulte[i].agentInfo.sm_ai_CertImage) {
-              resulte[i].agentInfo.sm_ai_CertImage = resulte[i].agentInfo.sm_ai_CertImage.split(',')
+            if (resulte[i].sm_ai_CertImage) {
+              resulte[i].sm_ai_CertImage = resulte[i].sm_ai_CertImage.split(',')
             } else {
-              resulte[i].agentInfo.sm_ai_CertImage = []
+              resulte[i].sm_ai_CertImage = []
             }
-            if (data.data[i].agentInfo.sm_ai_OtherImage) {
-              resulte[i].agentInfo.sm_ai_OtherImage = resulte[i].agentInfo.sm_ai_OtherImage.split(',')
+            if (data.data[i].sm_ai_OtherImage) {
+              resulte[i].sm_ai_OtherImage = resulte[i].sm_ai_OtherImage.split(',')
             } else {
-              resulte[i].agentInfo.sm_ai_OtherImage = []
+              resulte[i].sm_ai_OtherImage = []
             }
-            if (data.data[i].agentInfo.sm_ai_FeeImage) {
-              resulte[i].agentInfo.sm_ai_FeeImage = resulte[i].agentInfo.sm_ai_FeeImage.split(',')
+            if (data.data[i].sm_ai_FeeImage) {
+              resulte[i].sm_ai_FeeImage = resulte[i].sm_ai_FeeImage.split(',')
             } else {
-              resulte[i].agentInfo.sm_ai_FeeImage = []
+              resulte[i].sm_ai_FeeImage = []
             }
           }
           commit('initAdminSupplier',data.data)
