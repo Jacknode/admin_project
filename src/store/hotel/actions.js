@@ -1,7 +1,7 @@
 /**
  * Created by leibo on 18/4/2.
  */
-import axios from 'axios'
+//import axios from 'axios'
 
 export default {
   //酒店图片类型

@@ -75,7 +75,7 @@
         </el-submenu>
         <el-submenu index="3">
           <template slot="title">
-            <i class="icon-droplet"></i>
+            <i class="fa fa-gift"></i>
             <span>积分管理</span>
           </template>
           <el-menu-item-group>
@@ -129,7 +129,7 @@
       </el-submenu>
         <el-submenu index="6">
           <template slot="title">
-            <i class="icon-people"></i>
+            <i class="fa fa-hotel"></i>
             <span>酒店管理</span>
           </template>
           <el-menu-item-group>
@@ -165,7 +165,7 @@
         </el-submenu>
         <el-submenu index="7">
           <template slot="title">
-            <i class="icon-coin-yen"></i>
+            <i class="fa fa-cutlery"></i>
             <span>美食管理</span>
           </template>
           <el-menu-item-group>
@@ -183,7 +183,7 @@
         </el-submenu>
         <el-submenu index="8">
           <template slot="title">
-            <i class="icon-ticket"></i>
+            <i class="fa fa-car"></i>
             <span>租车管理</span>
           </template>
           <el-menu-item-group>
@@ -198,7 +198,7 @@
         </el-submenu>
         <el-submenu index="9">
         <template slot="title">
-          <i class="icon-ticket"></i>
+          <i class="fa fa-film"></i>
           <span>微电影管理</span>
         </template>
         <el-menu-item-group>
@@ -210,7 +210,7 @@
       </el-submenu>
         <el-submenu index="10">
           <template slot="title">
-            <i class="icon-ticket"></i>
+            <i class="fa fa-cloud-upload"></i>
             <span>上传App</span>
           </template>
           <el-menu-item-group>
